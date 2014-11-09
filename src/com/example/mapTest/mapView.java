@@ -20,9 +20,53 @@ import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.map.MapView;
 
 import java.util.ArrayList;
-class Car {
-    public int chepai;
-    public String leixing;
+
+
+class ContactInfo {
+    public String Name;
+    public String Company;
+    public String Address;
+    public double PositionLat;
+    public double PositionLng;
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getCompany() {
+        return Company;
+    }
+
+    public void setCompany(String company) {
+        Company = company;
+    }
+
+    public double getPositionLat() {
+        return PositionLat;
+    }
+
+    public void setPositionLat(double positionLat) {
+        PositionLat = positionLat;
+    }
+
+    public double getPositionLng() {
+        return PositionLng;
+    }
+
+    public void setPositionLng(double positionLng) {
+        PositionLng = positionLng;
+    }
 }
 
 
@@ -35,8 +79,7 @@ public class mapView extends Activity {
 
     MapView mMapView;
     BaiduMap mBaiduMap;
-    private   ArrayList<String> ss;
-    private  ArrayList<Car> cars;
+    private  ArrayList<ContactInfo> ContactList;
 
 
 
@@ -173,14 +216,6 @@ public class mapView extends Activity {
             }
         });
 
-        ss = new ArrayList<String>();
-        ss.add(100, "Henry");
-        ss.add("ssss");
-
-        ss.clear();
-        cars = new ArrayList<Car>();
-        Car car1;
-        car1 = new Car();
     }
 
     /**
