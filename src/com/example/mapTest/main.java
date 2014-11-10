@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.VersionInfo;
 
 public class main extends Activity {
+    private  SQLiteDatabase db;
 
 
     public void onCreate(Bundle savedInstanceState) {

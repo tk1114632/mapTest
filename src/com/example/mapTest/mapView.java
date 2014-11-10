@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.widget.TextView;
+
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -19,55 +22,12 @@ import com.baidu.mapapi.map.*;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.map.MapView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.List;
 
 
-class ContactInfo {
-    public String Name;
-    public String Company;
-    public String Address;
-    public double PositionLat;
-    public double PositionLng;
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public String getCompany() {
-        return Company;
-    }
-
-    public void setCompany(String company) {
-        Company = company;
-    }
-
-    public double getPositionLat() {
-        return PositionLat;
-    }
-
-    public void setPositionLat(double positionLat) {
-        PositionLat = positionLat;
-    }
-
-    public double getPositionLng() {
-        return PositionLng;
-    }
-
-    public void setPositionLng(double positionLng) {
-        PositionLng = positionLng;
-    }
-}
 
 
 public class mapView extends Activity {
@@ -80,19 +40,21 @@ public class mapView extends Activity {
     MapView mMapView;
     BaiduMap mBaiduMap;
     private  ArrayList<ContactInfo> ContactList;
-
+    private ArrayList<Marker> markerList;
 
 
     // UI相关
     //RadioGroup.OnCheckedChangeListener radioButtonListener;
     Button requestLocButton;
     Button displayNearContactButton;
-    boolean isFirstLoc = false;// 是否首次定位
+    boolean isFirstLoc = true;// 是否首次定位
     boolean isDisplayed = false; //是否已经显示附近联系人
 
     private Marker marker1;
     private Marker marker2;
+
     private InfoWindow mInfoWindow;
+    private RelativeLayout ContactDetailInfo;
 
     LatLng testPoint = new LatLng(31.239788,121.581575);
     LatLng testPoint2 = new LatLng(31.239381,121.48575);
@@ -104,6 +66,16 @@ public class mapView extends Activity {
 
         setContentView(R.layout.mapview);
 
+        //填充ArrayList<ContactInfo>
+        ContactList = new ArrayList<ContactInfo>();
+        ContactInfo temp = new ContactInfo("上海交大","宋明亨","上海市闵行区东川路800号",31.030579,121.435007,"18916924886");
+        ContactList.add(temp);
+        temp = new ContactInfo("Logic Solutions", "Vincent","上海市浦东新区博霞路50号",31.205939,121.609884,"13549998877");
+        ContactList.add(temp);
+
+        ContactDetailInfo = (RelativeLayout) findViewById(R.id.info_detail);
+
+        //初始化地图
         requestLocButton = (Button) findViewById(R.id.button1);
         mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
         requestLocButton.setText("我的位置");
@@ -168,16 +140,19 @@ public class mapView extends Activity {
         View.OnClickListener btnClickListener2 = new View.OnClickListener() {
             public void onClick(View v) {
                 if (!isDisplayed) {
-                    OverlayOptions option1 = new MarkerOptions()
-                            .position(testPoint)
-                            .icon(positionIcon)
-                            .title("测试地点")
-                            .zIndex(1);
-                    marker1 = (Marker) mBaiduMap.addOverlay(option1);
-                    OverlayOptions option2 = new MarkerOptions()
-                            .position(testPoint2)
-                            .icon(positionIcon);
-                    marker2 = (Marker) mBaiduMap.addOverlay(option2);
+
+                    for (ContactInfo currentContact : ContactList) {
+                        LatLng currentPosition = new LatLng(currentContact.getPositionLat(),currentContact.getPositionLng());
+                        OverlayOptions currentOption = new MarkerOptions()
+                                .position(currentPosition)
+                                .icon(positionIcon)
+                                .zIndex(5);
+                        Marker marker = (Marker) mBaiduMap.addOverlay(currentOption);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("ContactInformation",currentContact);
+                        marker.setExtraInfo(bundle);
+                    }
+
                     displayNearContactButton.setText("隐藏联系人");
                     isDisplayed = true;
                 }
@@ -196,26 +171,68 @@ public class mapView extends Activity {
                 Button button = new Button(getApplicationContext());
                 button.setBackgroundResource(R.drawable.popup);
                 InfoWindow.OnInfoWindowClickListener listener = null;
-                if (marker == marker1) {
-                    button.setText("宋明亨");
-                    listener = new InfoWindow.OnInfoWindowClickListener() {
+                //if (marker == marker1) {
+                Bundle bundle = marker.getExtraInfo();
+                final ContactInfo currentContact = (ContactInfo) bundle.get("ContactInformation");
+                button.setText(currentContact.getName()+"\ndsadsad");
+                Toast.makeText(mapView.this,
+                     "公司：" + currentContact.getCompany() + "\n" +
+                            "地址：" + currentContact.getAddress(),
+                     Toast.LENGTH_LONG).show();
+                listener = new InfoWindow.OnInfoWindowClickListener() {
                         public void onInfoWindowClick() {
-                            Toast.makeText(
-                                    mapView.this,
-                                    "公司：上海交大  " +
-                                            "地址：上海市闵行区东川路800号",
-                                    Toast.LENGTH_LONG).show();
+
                             mBaiduMap.hideInfoWindow();
                         }
-                    };
-                    LatLng ll = marker.getPosition();
-                    mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), ll, -47, listener);
-                    mBaiduMap.showInfoWindow(mInfoWindow);
-                }
+                };
+                LatLng ll = marker.getPosition();
+                mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(button), ll, -47, listener);
+                mBaiduMap.showInfoWindow(mInfoWindow);
+
+                //显示详细信息
+                ContactDetailInfo.setVisibility(View.VISIBLE);
+                popupInfo(ContactDetailInfo, currentContact);
+
+                //}
+
                 return true;
             }
         });
+    }
 
+    protected void popupInfo(RelativeLayout mMarkerDetail, ContactInfo info)
+    {
+        ViewHolder CurrentDetail = null;
+        if (mMarkerDetail.getTag() == null)
+        {
+            CurrentDetail = new ViewHolder();
+            CurrentDetail.infoname = (TextView) mMarkerDetail.findViewById(R.id.info_name);
+            CurrentDetail.infocompany = (TextView) mMarkerDetail.findViewById(R.id.info_company);
+            CurrentDetail.infoaddr = (TextView) mMarkerDetail.findViewById(R.id.info_address);
+            CurrentDetail.infotel = (TextView) mMarkerDetail.findViewById(R.id.info_tel);
+            CurrentDetail.naviButton = (Button) mMarkerDetail.findViewById(R.id.navigation_button);
+            mMarkerDetail.setTag(CurrentDetail);
+        }
+        CurrentDetail = (ViewHolder) mMarkerDetail.getTag();
+        CurrentDetail.infoname.setText("姓名："+info.getName());
+        CurrentDetail.infocompany.setText("公司："+info.getCompany());
+        CurrentDetail.infoaddr.setText("地址："+info.getAddress());
+        CurrentDetail.infotel.setText("电话："+info.tel);
+        View.OnClickListener NaviButtonListener = new View.OnClickListener(){
+            public void onClick(View v){
+
+            }
+        };
+        CurrentDetail.naviButton.setOnClickListener(NaviButtonListener);
+    }
+
+    public class ViewHolder
+    {
+        TextView infoname;
+        TextView infoaddr;
+        TextView infotel;
+        TextView infocompany;
+        Button naviButton;
     }
 
     /**
