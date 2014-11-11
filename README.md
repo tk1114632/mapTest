@@ -3,6 +3,15 @@ mapTest
 
 Map module beta, for Android CRM of Showcase
 
+===============================================
+2014.11.11 Revised
+All map functions are fulfilled
+1.Location
+2.Display marker for contacts
+3.Details
+4.Navigation
+
+UI more friendly.
 
 ==================================================
 2014.11.07 Reviesed
