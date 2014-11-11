@@ -246,7 +246,6 @@ public class mapView extends Activity {
             @Override
             public void onMapClick(LatLng latLng) {
                 mMarkerDetail.setVisibility(View.GONE);
-                mBaiduMap.hideInfoWindow();
             }
 
             @Override

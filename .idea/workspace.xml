@@ -71,8 +71,8 @@
       <file leaf-file-name="mapView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/mapView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8319149" vertical-offset="1989" max-vertical-offset="5355">
-              <caret line="190" column="65" selection-start-line="190" selection-start-column="65" selection-end-line="190" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.45957446" vertical-offset="3489" max-vertical-offset="5340">
+              <caret line="247" column="55" selection-start-line="247" selection-start-column="55" selection-end-line="247" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2928#3524#0" expanded="true" />
@@ -85,8 +85,10 @@
                 <element signature="e#8324#8325#0" expanded="true" />
                 <element signature="e#9476#9748#0" expanded="true" />
                 <element signature="e#9737#9738#0" expanded="true" />
+                <element signature="e#9989#9990#0" expanded="true" />
+                <element signature="e#10059#10060#0" expanded="true" />
+                <element signature="e#10140#10141#0" expanded="true" />
                 <element signature="e#10184#10185#0" expanded="true" />
-                <element signature="e#10228#10229#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -598,12 +600,12 @@
       <workItem from="1415439455433" duration="2102000" />
       <workItem from="1415602925606" duration="241000" />
       <workItem from="1415626038339" duration="11262000" />
-      <workItem from="1415708169344" duration="4075000" />
+      <workItem from="1415708169344" duration="4117000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60930000" />
+    <option name="totallyTimeSpent" value="60972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="23" width="1399" height="877" extended-state="6" />
@@ -1047,8 +1049,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/mapView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8319149" vertical-offset="1989" max-vertical-offset="5355">
-          <caret line="190" column="65" selection-start-line="190" selection-start-column="65" selection-end-line="190" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.45957446" vertical-offset="3489" max-vertical-offset="5340">
+          <caret line="247" column="55" selection-start-line="247" selection-start-column="55" selection-end-line="247" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2928#3524#0" expanded="true" />
@@ -1061,8 +1063,10 @@
             <element signature="e#8324#8325#0" expanded="true" />
             <element signature="e#9476#9748#0" expanded="true" />
             <element signature="e#9737#9738#0" expanded="true" />
+            <element signature="e#9989#9990#0" expanded="true" />
+            <element signature="e#10059#10060#0" expanded="true" />
+            <element signature="e#10140#10141#0" expanded="true" />
             <element signature="e#10184#10185#0" expanded="true" />
-            <element signature="e#10228#10229#0" expanded="true" />
           </folding>
         </state>
       </provider>
