@@ -18,7 +18,7 @@
             android:visibility="gone"
             android:layout_alignParentBottom="true"
             android:background="#CC4e5a6b"
-            android:clickable="true">
+            android:clickable="false">
         <LinearLayout
                 android:layout_width="250dip"
                 android:layout_height="fill_parent"
@@ -32,21 +32,25 @@
                     android:id="@+id/info_name"
                     android:layout_width="wrap_content"
                     android:layout_height="40dip"
-                    android:text="姓名Xxx"/>
+                    android:text="姓名Xxx"
+                    android:textColor="#FFFFFF"/>
             <TextView
                     android:id="@+id/info_company"
                     android:layout_width="wrap_content"
                     android:layout_height="40dip"
+                    android:textColor="#FFFFFF"
                     android:text="公司Xxx"/>
             <TextView
                     android:id="@+id/info_tel"
                     android:layout_width="wrap_content"
                     android:layout_height="40dip"
+                    android:textColor="#FFFFFF"
                     android:text="电话Xxx"/>
             <TextView
                     android:id="@+id/info_address"
                     android:layout_width="wrap_content"
                     android:layout_height="40dip"
+                    android:textColor="#FFFFFF"
                     android:text="地址Xxx"/>
         </LinearLayout>
         <LinearLayout
@@ -60,7 +64,8 @@
                     android:id="@+id/navigation_button"
                     android:layout_width="fill_parent"
                     android:layout_height="40dip"
-                    android:layout_gravity="center"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="22dip"
                     android:text="到这里去"
                     />
          </LinearLayout>

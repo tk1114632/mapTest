@@ -5,7 +5,10 @@ package com.example.mapTest;
  */
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,9 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.*;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.navi.BaiduMapAppNotSupportNaviException;
+import com.baidu.mapapi.navi.BaiduMapNavigation;
+import com.baidu.mapapi.navi.NaviPara;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -58,7 +64,7 @@ public class mapView extends Activity {
 
     LatLng testPoint = new LatLng(31.239788,121.581575);
     LatLng testPoint2 = new LatLng(31.239381,121.48575);
-    BitmapDescriptor positionIcon = BitmapDescriptorFactory.fromResource(R.drawable.bubble_pink);
+    BitmapDescriptor positionIcon = BitmapDescriptorFactory.fromResource(R.drawable.maker);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,6 +77,8 @@ public class mapView extends Activity {
         ContactInfo temp = new ContactInfo("上海交大","宋明亨","上海市闵行区东川路800号",31.030579,121.435007,"18916924886");
         ContactList.add(temp);
         temp = new ContactInfo("Logic Solutions", "Vincent","上海市浦东新区博霞路50号",31.205939,121.609884,"13549998877");
+        ContactList.add(temp);
+        temp = new ContactInfo("人民广场", "人民","上海市人民广场",31.238802,121.481033,"110");
         ContactList.add(temp);
 
         ContactDetailInfo = (RelativeLayout) findViewById(R.id.info_detail);
@@ -169,16 +177,21 @@ public class mapView extends Activity {
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             public boolean onMarkerClick(final Marker marker) {
                 Button button = new Button(getApplicationContext());
-                button.setBackgroundResource(R.drawable.popup);
+                button.setBackgroundResource(R.drawable.location_tips);
+                button.setWidth(250);
                 InfoWindow.OnInfoWindowClickListener listener = null;
                 //if (marker == marker1) {
                 Bundle bundle = marker.getExtraInfo();
                 final ContactInfo currentContact = (ContactInfo) bundle.get("ContactInformation");
-                button.setText(currentContact.getName()+"\ndsadsad");
-                Toast.makeText(mapView.this,
+                button.setText(currentContact.getName());
+                button.setTextColor(Color.WHITE);
+
+                //弹出信息
+                /*Toast.makeText(mapView.this,
                      "公司：" + currentContact.getCompany() + "\n" +
                             "地址：" + currentContact.getAddress(),
-                     Toast.LENGTH_LONG).show();
+                     Toast.LENGTH_LONG).show();*/
+
                 listener = new InfoWindow.OnInfoWindowClickListener() {
                         public void onInfoWindowClick() {
 
@@ -200,7 +213,7 @@ public class mapView extends Activity {
         });
     }
 
-    protected void popupInfo(RelativeLayout mMarkerDetail, ContactInfo info)
+    protected void popupInfo(final RelativeLayout mMarkerDetail, final ContactInfo info)
     {
         ViewHolder CurrentDetail = null;
         if (mMarkerDetail.getTag() == null)
@@ -220,11 +233,59 @@ public class mapView extends Activity {
         CurrentDetail.infotel.setText("电话："+info.tel);
         View.OnClickListener NaviButtonListener = new View.OnClickListener(){
             public void onClick(View v){
-
+                //导航。默认客户端，如果没有则用web
+                startNavi(mMapView, info);
+                mBaiduMap.hideInfoWindow();
+                mMarkerDetail.setVisibility(View.GONE);
             }
         };
         CurrentDetail.naviButton.setOnClickListener(NaviButtonListener);
+
+        //地图单击事件
+        mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                mMarkerDetail.setVisibility(View.GONE);
+                mBaiduMap.hideInfoWindow();
+            }
+
+            @Override
+            public boolean onMapPoiClick(MapPoi mapPoi) {
+                return false;
+            }
+        });
     }
+
+    //导航函数
+    public void startNavi(View view, ContactInfo currentInfo) {
+        LatLng pt1 = new LatLng(mBaiduMap.getLocationData().latitude, mBaiduMap.getLocationData().longitude);
+        LatLng pt2 = new LatLng(currentInfo.getPositionLat(), currentInfo.getPositionLng());
+        // 构建 导航参数
+        NaviPara para = new NaviPara();
+        para.startPoint = pt1;
+        para.startName = "从这里开始";
+        para.endPoint = pt2;
+        para.endName = "到这里结束";
+
+        try {
+
+            BaiduMapNavigation.openBaiduMapNavi(para, this);
+
+        } catch (BaiduMapAppNotSupportNaviException e) {
+            startWebNavi(view,pt1,pt2);
+        }
+    }
+
+    public void startWebNavi(View view, LatLng p1, LatLng p2) {
+        LatLng pt1 = p1;
+        LatLng pt2 = p2;
+        // 构建 导航参数
+        NaviPara para = new NaviPara();
+        para.startPoint = pt1;
+        para.endPoint = pt2;
+        BaiduMapNavigation.openWebBaiduMapNavi(para, this);
+    }
+
 
     public class ViewHolder
     {
