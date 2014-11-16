@@ -8,8 +8,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -48,6 +50,10 @@ public class mapView extends Activity {
     private  ArrayList<ContactInfo> ContactList;
     private ArrayList<Marker> markerList;
 
+    //数据库
+    SQLiteDatabase db = null;
+    DBManager ContactDBManager = null;
+
 
     // UI相关
     //RadioGroup.OnCheckedChangeListener radioButtonListener;
@@ -72,16 +78,23 @@ public class mapView extends Activity {
 
         setContentView(R.layout.mapview);
 
+        Log.e("isisisisisisis===", " ");
         //填充ArrayList<ContactInfo>
         ContactList = new ArrayList<ContactInfo>();
-        ContactInfo temp = new ContactInfo("上海交大","宋明亨","上海市闵行区东川路800号",31.030579,121.435007,"18916924886");
+        /*ContactInfo temp = new ContactInfo("宋明亨","上海交大","上海市闵行区东川路800号",31.030579,121.435007,"18916924886");
         ContactList.add(temp);
-        temp = new ContactInfo("Logic Solutions", "Vincent","上海市浦东新区博霞路50号",31.205939,121.609884,"13549998877");
+        temp = new ContactInfo("Vincent","Logic Solutions", "上海市浦东新区博霞路50号",31.205939,121.609884,"13549998877");
         ContactList.add(temp);
-        temp = new ContactInfo("人民广场", "人民","上海市人民广场",31.238802,121.481033,"110");
+        temp = new ContactInfo("人民广场", "人民广场","上海市人民广场",31.238802,121.481033,"110");
         ContactList.add(temp);
+        temp = new ContactInfo("孟汀阳","上海交通大学", "上海市陆家嘴",31.242559,121.510786,"+86 131342");
+        ContactList.add(temp);*/
 
-        ContactDetailInfo = (RelativeLayout) findViewById(R.id.info_detail);
+        ContactDBManager = new DBManager(this);
+
+        ContactList = ContactDBManager.queryAll();
+
+        ContactDetailInfo = (RelativeLayout) this.findViewById(R.id.info_detail);
 
         //初始化地图
         requestLocButton = (Button) findViewById(R.id.button1);
@@ -278,7 +291,7 @@ public class mapView extends Activity {
     public void startWebNavi(View view, LatLng p1, LatLng p2) {
         LatLng pt1 = p1;
         LatLng pt2 = p2;
-        // 构建 导航参数
+        // 构建 导航
         NaviPara para = new NaviPara();
         para.startPoint = pt1;
         para.endPoint = pt2;

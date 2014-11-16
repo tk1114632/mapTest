@@ -14,6 +14,25 @@ public class ContactInfo implements Serializable {
     public double PositionLng;
     public String tel;
 
+    private int db_id = -1;
+
+    public int getDb_id() {
+        return db_id;
+    }
+
+    public void setDb_id(int db_id) {
+        this.db_id = db_id;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getTel() {
+
+        return tel;
+    }
+
     public String getName() {
         return Name;
     }
@@ -53,7 +72,7 @@ public class ContactInfo implements Serializable {
         PositionLng = positionLng;
     }
 
-    public ContactInfo(String company, String name, String address, double positionLat, double positionLng, String tel) {
+    public ContactInfo(String name, String company, String address, double positionLat, double positionLng, String tel) {
         Company = company;
         Name = name;
         Address = address;

@@ -22,5 +22,14 @@
                 android:text="地图"
                 android:id="@+id/buttonMap"/>
     </LinearLayout>
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="添加前两个"
+            android:onClick="addOne"/>
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="添加后两个"
+            android:onClick="addTwo"/>
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="删除数据"
+            android:onClick="deleteAll"/>
 </LinearLayout>
 
