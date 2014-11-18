@@ -22,6 +22,16 @@
                 android:text="地图"
                 android:id="@+id/buttonMap"/>
     </LinearLayout>
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="300dip"
+            android:id="@+id/contactsList"
+            android:layout_gravity="center_horizontal"
+            android:clickable="false"
+            />
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="添加联系人"
+            android:onClick="addNewPerson"/>
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
             android:text="添加前两个"
             android:onClick="addOne"/>
@@ -31,5 +41,10 @@
     <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
             android:text="删除数据"
             android:onClick="deleteAll"/>
+    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+            android:text="刷新"
+            android:onClick="refreshButton"/>
+
+
 </LinearLayout>
 

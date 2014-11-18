@@ -27,12 +27,17 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.example.mapTest.mapView"
+                android:name="mapView"
                 android:screenOrientation="portrait"
                 android:configChanges="orientation|keyboardHidden"
                 android:label="地图">
-
-         </activity>
+        </activity>
+        <activity
+                android:name="newContact"
+                android:screenOrientation="portrait"
+                android:configChanges="orientation|keyboardHidden"
+                android:label="新联系人">
+        </activity>
 
 
         <service

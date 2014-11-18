@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //数据库第一次调用时候
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE Person" +
+        db.execSQL("CREATE TABLE IF NOT EXIST Person" +
                 "(" +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name VARCHAR(10), " +
@@ -31,6 +31,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "position_lng DOUBLE, " +
                 "tel VARCHAR(20)" +
                 ")");
+
+
         Log.e("数据库表建立完毕","DONE!!!!!");
     }
 

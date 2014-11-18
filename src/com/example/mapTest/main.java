@@ -27,11 +27,14 @@ public class main extends Activity {
     DBManager ContactDBManager;
 
 
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
         ContactDBManager = new DBManager(this);
+
+        refreshList();
 
         Button buttonMap = (Button)this.findViewById(R.id.buttonMap);
         buttonMap.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +44,8 @@ public class main extends Activity {
                 startActivity(i);
             }
         });
+
+
     }
 
     public void addOne(View view){
@@ -64,18 +69,45 @@ public class main extends Activity {
         ContactDBManager.add_person(list);
     }
 
-    public void deleteAll(View view){
-        ContactDBManager.deleteOldPerson(new ContactInfo("人民广场", "人民广场","上海市人民广场",31.238802,121.481033,"110"));
-        ContactDBManager.deleteOldPerson(new ContactInfo("孟汀阳","上海交通大学", "上海市陆家嘴",31.242559,121.510786,"+86 131342"));
-        ContactDBManager.deleteOldPerson(new ContactInfo("宋明亨","上海交大","上海市闵行区东川路800号",31.030579,121.435007,"18916924886"));
-        ContactDBManager.deleteOldPerson(new ContactInfo("Vincent","Logic Solutions", "上海市浦东新区博霞路50号",31.205939,121.609884,"13549998877"));
+    public void addNewPerson (View view){
+        Intent i = new Intent(main.this , newContact.class);
+        startActivity(i);
     }
 
-    protected void OnDestory() {
+    public void deleteAll(View view){
+        ContactDBManager.deleteAll();
+    }
+
+    public void refreshList(){
+        ArrayList<String> arrForList = new ArrayList<String>();
+        ListView list1 = (ListView) findViewById(R.id.contactsList);
+        ArrayList<ContactInfo> contentInDB = new ArrayList<ContactInfo>();
+        contentInDB = ContactDBManager.queryAll();
+        for (ContactInfo currentContact : contentInDB) {
+            arrForList.add(currentContact.getName());
+        }
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arrForList);
+        list1.setAdapter(arrayAdapter);
+    }
+
+    public void refreshButton(View view){
+        refreshList();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        refreshList();
+        super.onResume();
+    }
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
         ContactDBManager.closeDB();
     }
-
-
 
 }

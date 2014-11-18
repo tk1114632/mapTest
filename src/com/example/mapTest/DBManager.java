@@ -21,7 +21,7 @@ public class DBManager {
         db = helper.getWritableDatabase();
     }
 
-    public void add_person(List<ContactInfo> personList){
+    public void add_person(ArrayList<ContactInfo> personList){
         db.beginTransaction();
         try {
             for (ContactInfo person : personList) {
@@ -35,6 +35,7 @@ public class DBManager {
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();
+            Log.e("Person added completion!!!!","===============================");
         }
     }
 
@@ -67,7 +68,7 @@ public class DBManager {
     }
 
     public void deleteAll() {
-        db.delete("Person", "_id=*",null);
+        db.execSQL("DELETE FROM Person");
     }
 
     public ArrayList<ContactInfo> queryAll() {

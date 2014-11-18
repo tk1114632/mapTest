@@ -81,14 +81,6 @@ public class mapView extends Activity {
         Log.e("isisisisisisis===", " ");
         //填充ArrayList<ContactInfo>
         ContactList = new ArrayList<ContactInfo>();
-        /*ContactInfo temp = new ContactInfo("宋明亨","上海交大","上海市闵行区东川路800号",31.030579,121.435007,"18916924886");
-        ContactList.add(temp);
-        temp = new ContactInfo("Vincent","Logic Solutions", "上海市浦东新区博霞路50号",31.205939,121.609884,"13549998877");
-        ContactList.add(temp);
-        temp = new ContactInfo("人民广场", "人民广场","上海市人民广场",31.238802,121.481033,"110");
-        ContactList.add(temp);
-        temp = new ContactInfo("孟汀阳","上海交通大学", "上海市陆家嘴",31.242559,121.510786,"+86 131342");
-        ContactList.add(temp);*/
 
         ContactDBManager = new DBManager(this);
 
