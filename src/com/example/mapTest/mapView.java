@@ -6,18 +6,17 @@ package com.example.mapTest;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.*;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -32,7 +31,8 @@ import com.baidu.mapapi.navi.NaviPara;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -68,6 +68,7 @@ public class mapView extends Activity {
     private InfoWindow mInfoWindow;
     private RelativeLayout ContactDetailInfo;
 
+
     LatLng testPoint = new LatLng(31.239788,121.581575);
     LatLng testPoint2 = new LatLng(31.239381,121.48575);
     BitmapDescriptor positionIcon = BitmapDescriptorFactory.fromResource(R.drawable.maker);
@@ -86,12 +87,14 @@ public class mapView extends Activity {
 
         ContactList = ContactDBManager.queryAll();
 
+
         ContactDetailInfo = (RelativeLayout) this.findViewById(R.id.info_detail);
 
         //初始化地图
         requestLocButton = (Button) findViewById(R.id.button1);
         mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
-        requestLocButton.setText("我的位置");
+        requestLocButton.setText("");
+        requestLocButton.setBackgroundResource(R.drawable.custom_loc);
         View.OnClickListener btnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
                 mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
@@ -149,7 +152,7 @@ public class mapView extends Activity {
 
         //监听显示附近联系人
         displayNearContactButton = (Button) findViewById(R.id.button2);
-        displayNearContactButton.setText("显示联系人");
+        displayNearContactButton.setText("显示标记");
         View.OnClickListener btnClickListener2 = new View.OnClickListener() {
             public void onClick(View v) {
                 if (!isDisplayed) {
@@ -166,13 +169,13 @@ public class mapView extends Activity {
                         marker.setExtraInfo(bundle);
                     }
 
-                    displayNearContactButton.setText("隐藏联系人");
+                    displayNearContactButton.setText("隐藏标记");
                     isDisplayed = true;
                 }
                 else {
                     mBaiduMap.clear();
                     isDisplayed = false;
-                    displayNearContactButton.setText("显示联系人");
+                    displayNearContactButton.setText("显示标记");
                 }
             }
         };
@@ -191,11 +194,6 @@ public class mapView extends Activity {
                 button.setText(currentContact.getName());
                 button.setTextColor(Color.WHITE);
 
-                //弹出信息
-                /*Toast.makeText(mapView.this,
-                     "公司：" + currentContact.getCompany() + "\n" +
-                            "地址：" + currentContact.getAddress(),
-                     Toast.LENGTH_LONG).show();*/
 
                 listener = new InfoWindow.OnInfoWindowClickListener() {
                         public void onInfoWindowClick() {
@@ -323,10 +321,55 @@ public class mapView extends Activity {
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
                 mBaiduMap.animateMapStatus(u);
             }
+            for (ContactInfo currentPerson : ContactList){
+                double distance = locData.latitude*locData.latitude + locData.longitude*locData.longitude;
+                currentPerson.setDistance(distance);
+            }
+            rankList(ContactList);
         }
 
         public void onReceivePoi(BDLocation poiLocation) {
         }
+    }
+
+    public void rankList(ArrayList<ContactInfo> thisList) {
+        Comparator<ContactInfo> contactDistanceComparator = new Comparator<ContactInfo>() {
+            public int compare(ContactInfo s1, ContactInfo s2) {
+                if (s1.getDistance() != s2.getDistance()) {
+                    double result = s2.getDistance() - s1.getDistance();
+                    return (int) result;
+                } else {
+                    //年龄相同则按姓名排序
+                    if (!s1.getName().equals(s2.getName())) {
+                        return s2.getName().compareTo(s1.getName());
+                    } else {
+                        //姓名也相同则按学号排序
+                        return s2.getCompany().compareTo(s1.getCompany());
+                    }
+                }
+            }
+        };
+        Collections.sort(thisList,contactDistanceComparator);
+    }
+
+    public void contactListButtonOnClick(View view){
+        Context context = getApplicationContext();
+        final ListView myListView = (ListView) findViewById(R.id.poplistView);
+        popListAdapter adapter = new popListAdapter(context,ContactList);
+        myListView.setAdapter(adapter);
+        myListView.setVisibility(View.VISIBLE);
+        //地图单击事件
+        mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                myListView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public boolean onMapPoiClick(MapPoi mapPoi) {
+                return false;
+            }
+        });
     }
 
     @Override

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#FF191919"
+              android:orientation="horizontal"
+              >
+
+    <ImageView
+            android:id="@+id/item_pic"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_gravity="center"
+            android:src="@drawable/contactpic" />
+
+    <TextView
+            android:id="@+id/item_name"
+            android:layout_width="80dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:paddingRight="10dp"
+            android:text="宋明亨" />
+
+    <TextView
+            android:id="@+id/item_company"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:paddingRight="10dp"
+            android:text="上海交通大学" />
+
+
+
+</LinearLayout>
