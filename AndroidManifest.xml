@@ -18,7 +18,7 @@
 
         <activity
                 android:name="main"
-                android:screenOrientation="portrait"
+                android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
                 android:label="CRM for Showcase">
             <intent-filter>
@@ -28,7 +28,7 @@
         </activity>
         <activity
                 android:name="mapView"
-                android:screenOrientation="portrait"
+                android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
                 android:label="地图">
         </activity>
