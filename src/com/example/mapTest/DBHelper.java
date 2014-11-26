@@ -10,7 +10,7 @@ import android.util.Log;
  */
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "text.db";
+    private static final String DATABASE_NAME = "text1.db";
     private static final int DATABASE_VERSION = 1;
 
     public DBHelper(Context context) {
@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //数据库第一次调用时候
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXIST Person" +
+        db.execSQL("CREATE TABLE IF NOT EXISTS Person" +
                 "(" +
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name VARCHAR(10), " +
@@ -31,8 +31,20 @@ public class DBHelper extends SQLiteOpenHelper {
                 "position_lng DOUBLE, " +
                 "tel VARCHAR(20)" +
                 ")");
-
-
+        db.execSQL("CREATE TABLE IF NOT EXISTS Company" +
+                "(" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name VARCHAR(25), " +
+                "address VARCHAR(50), " +
+                "phone VARCHAR(30), " +
+                "website VARCHAR(50), " +
+                "billing_address_id INTEGER, " +
+                "contact_id INTEGER, " +
+                "event_id INTEGER, " +
+                "industry_id INTEGER, " +
+                "sale_id INTEGER, " +
+                "shipping_address_id INTEGER" +
+                ")");
         Log.e("数据库表建立完毕","DONE!!!!!");
     }
 
