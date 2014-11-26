@@ -13,12 +13,7 @@ public class ContactInfo implements Serializable {
     public double PositionLat;
     public double PositionLng;
     public String tel;
-
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
-
-    public int distance = -1;
+    public double distance = -1.0;
 
     private int db_id = -1;
 
@@ -26,8 +21,12 @@ public class ContactInfo implements Serializable {
         return db_id;
     }
 
-    public int getDistance() {
+    public double getDistance() {
         return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public void setDb_id(int db_id) {

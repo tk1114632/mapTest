@@ -28,7 +28,6 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.navi.BaiduMapAppNotSupportNaviException;
 import com.baidu.mapapi.navi.BaiduMapNavigation;
 import com.baidu.mapapi.navi.NaviPara;
-import com.baidu.mapapi.utils.DistanceUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,7 +44,6 @@ public class mapView extends Activity {
     public MyLocationListenner myListener = new MyLocationListenner();
     private MyLocationConfiguration.LocationMode mCurrentMode;
     BitmapDescriptor mCurrentMarker;
-    DistanceUtil distanceManager;
 
     MapView mMapView;
     BaiduMap mBaiduMap;
@@ -81,13 +79,13 @@ public class mapView extends Activity {
 
         setContentView(R.layout.mapview);
 
+        Log.e("isisisisisisis===", " ");
         //填充ArrayList<ContactInfo>
         ContactList = new ArrayList<ContactInfo>();
 
         ContactDBManager = new DBManager(this);
 
         ContactList = ContactDBManager.queryAll();
-        distanceManager = new DistanceUtil();
 
 
         ContactDetailInfo = (RelativeLayout) this.findViewById(R.id.info_detail);
@@ -209,7 +207,6 @@ public class mapView extends Activity {
 
                 //显示详细信息
                 ContactDetailInfo.setVisibility(View.VISIBLE);
-                requestLocButton.setVisibility(View.GONE);
                 popupInfo(ContactDetailInfo, currentContact);
 
                 //}
@@ -243,7 +240,6 @@ public class mapView extends Activity {
                 startNavi(mMapView, info);
                 mBaiduMap.hideInfoWindow();
                 mMarkerDetail.setVisibility(View.GONE);
-                requestLocButton.setVisibility(View.VISIBLE);
             }
         };
         CurrentDetail.naviButton.setOnClickListener(NaviButtonListener);
@@ -326,11 +322,8 @@ public class mapView extends Activity {
                 mBaiduMap.animateMapStatus(u);
             }
             for (ContactInfo currentPerson : ContactList){
-                LatLng currentLatlng = new LatLng(currentPerson.getPositionLat(),currentPerson.getPositionLng());
-                LatLng myLatlng = new LatLng(locData.latitude,locData.longitude);
-                int distance = (int) distanceManager.getDistance(currentLatlng,myLatlng);
+                double distance = locData.latitude*locData.latitude + locData.longitude*locData.longitude;
                 currentPerson.setDistance(distance);
-                Log.e("Distance of " + currentPerson.getName()+" :", currentPerson.getDistance()+" id: " + currentPerson.getDb_id()+" ================");
             }
             rankList(ContactList);
         }
@@ -343,7 +336,7 @@ public class mapView extends Activity {
         Comparator<ContactInfo> contactDistanceComparator = new Comparator<ContactInfo>() {
             public int compare(ContactInfo s1, ContactInfo s2) {
                 if (s1.getDistance() != s2.getDistance()) {
-                    double result = s1.getDistance() - s2.getDistance();
+                    double result = s2.getDistance() - s1.getDistance();
                     return (int) result;
                 } else {
                     //年龄相同则按姓名排序
@@ -362,14 +355,6 @@ public class mapView extends Activity {
     public void contactListButtonOnClick(View view){
         Context context = getApplicationContext();
         final ListView myListView = (ListView) findViewById(R.id.poplistView);
-
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ContactList.get(position).getDb_id();
-
-            }
-        });
         popListAdapter adapter = new popListAdapter(context,ContactList);
         myListView.setAdapter(adapter);
         myListView.setVisibility(View.VISIBLE);
