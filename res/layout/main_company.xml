@@ -23,7 +23,7 @@
                 android:id="@+id/link_to_companies"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:textSize="10dp"
+                android:textSize="20dip"
                 android:layout_weight="1"
                 android:text="公司"
                 android:onClick="refreshCompanyButton"/>
@@ -32,7 +32,7 @@
         	    android:id="@+id/link_to_contacts"
         	    android:layout_width="wrap_content"
         	    android:layout_height="30dp"
-        	    android:textSize="10dp"
+        	    android:textSize="20dip"
         	    android:layout_weight="1"
         	    android:text="联系人" />
 
@@ -81,7 +81,7 @@
 	            android:id="@+id/companies_List"
 	            android:layout_width="fill_parent"
 	            android:layout_height="fill_parent"
-
+	            android:clickable="true"
                 android:cacheColorHint="@color/white"
                 android:divider="@color/white"
                 />
