@@ -4,10 +4,7 @@ package com.example.mapTest;
  * Created by tk1114632 on 11/3/14.
  */
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,6 +30,8 @@ public class main extends Activity {
         setContentView(R.layout.main_company);
 
         ContactDBManager = new DBManager(this);
+        refreshCompanyList();
+
     }
 
         /*ContactDBManager = new DBManager(this);
@@ -99,9 +98,8 @@ public class main extends Activity {
 
     public void refreshCompanyList(){
         //ArrayList<String> arrForList = new ArrayList<String>();
-        ListView list1 = (ListView) findViewById(R.id.companies_List);
-        ArrayList<CompanyInfo> contentInDB = new ArrayList<CompanyInfo>();
-        contentInDB = ContactDBManager.company_queryAll();
+        final ListView list1 = (ListView) findViewById(R.id.companies_List);
+        final ArrayList<CompanyInfo> contentInDB = ContactDBManager.company_queryAll();
         //for (CompanyInfo currentContact : contentInDB) {
         //    arrForList.add(currentContact.getName());
         //}
@@ -109,6 +107,16 @@ public class main extends Activity {
         Context context = getApplicationContext();
         companyListAdapter arrayAdapter = new companyListAdapter(context, contentInDB);
         list1.setAdapter(arrayAdapter);
+        list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int x = contentInDB.get(position).getDb_id();
+                Log.e("setOnItemClickListener===========","sssssss====="+ x +"=====");
+                Toast.makeText(main.this,"sssssss====="+ x +"=====",Toast.LENGTH_LONG).show();
+            }
+        });
+
+      //  list1.setOnItemLongClickListener();
 
     }
 
@@ -308,6 +316,7 @@ public class main extends Activity {
     protected void onResume() {
         //refreshList();
         super.onResume();
+        refreshCompanyList();
     }
     @Override
     protected void onDestroy() {
