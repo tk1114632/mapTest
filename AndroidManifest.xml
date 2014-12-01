@@ -20,8 +20,7 @@
                 android:name="main"
                 android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
-                android:label="CRM for Showcase"
-                android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+                android:label="CRM for Showcase">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

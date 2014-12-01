@@ -22,23 +22,23 @@
         	<Button
                 android:id="@+id/link_to_companies"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:layout_height="30dp"
+                android:textSize="10dp"
                 android:layout_weight="1"
                 android:text="公司" />
 
         	<Button
         	    android:id="@+id/link_to_contacts"
         	    android:layout_width="wrap_content"
-        	    android:layout_height="wrap_content"
-        	    android:textSize="10sp"
+        	    android:layout_height="30dp"
+        	    android:textSize="10dp"
         	    android:layout_weight="1"
         	    android:text="联系人" />
 
         	<Button        	    
         	    android:layout_width="wrap_content"
-        	    android:layout_height="wrap_content"
-        	    android:textSize="10sp"
+        	    android:layout_height="30dp"
+        	    android:textSize="10dp"
         	    android:layout_weight="1"
         	    android:text="添加" 
         	    android:onClick="add_new_company" />
