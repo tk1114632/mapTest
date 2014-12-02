@@ -4,10 +4,8 @@ package com.example.mapTest;
  * Created by tk1114632 on 11/3/14.
  */
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.app.AlertDialog;
+import android.content.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,12 +17,17 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.VersionInfo;
+import org.w3c.dom.Text;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class main extends Activity {
     //数据库ContactDB
     DBManager ContactDBManager;
+    ListView list1;
+    ArrayList<CompanyInfo> contentInDB;
+    int currentCompanyDBiD = 0;
 
 
 
@@ -33,6 +36,44 @@ public class main extends Activity {
         setContentView(R.layout.main_company);
 
         ContactDBManager = new DBManager(this);
+
+        list1 = (ListView) findViewById(R.id.companies_List);
+        contentInDB = ContactDBManager.company_queryAll();
+        Context context = getApplicationContext();
+        companyListAdapter arrayAdapter = new companyListAdapter(context, contentInDB);
+        list1.setAdapter(arrayAdapter);
+        //短按
+        list1.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                currentCompanyDBiD = contentInDB.get(position).getDb_id();
+                Log.e("","DBID ========"+contentInDB.get(position).getDb_id());
+                refreshCompanyDetailDisplay();
+            }
+        });
+        list1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                new AlertDialog.Builder(main.this)
+                        .setTitle("删除联系人")
+                        .setMessage("确定删除"+contentInDB.get(position).getName()+"吗?")
+                        .setPositiveButton("否", null)
+                        .setNegativeButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ContactDBManager.deleteOldCompany(contentInDB.get(position).getDb_id());
+                                refreshCompanyList();
+                                currentCompanyDBiD = 0;
+                            }
+                        })
+                        .setIcon(R.drawable.ic_launcher)
+                        .show();
+
+                return false;
+            }
+        });
+        refreshCompanyDetailDisplay();
+
     }
 
         /*ContactDBManager = new DBManager(this);
@@ -98,18 +139,58 @@ public class main extends Activity {
     }*/
 
     public void refreshCompanyList(){
-        //ArrayList<String> arrForList = new ArrayList<String>();
-        ListView list1 = (ListView) findViewById(R.id.companies_List);
-        ArrayList<CompanyInfo> contentInDB = new ArrayList<CompanyInfo>();
         contentInDB = ContactDBManager.company_queryAll();
-        //for (CompanyInfo currentContact : contentInDB) {
-        //    arrForList.add(currentContact.getName());
-        //}
-        //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, arrForList);
         Context context = getApplicationContext();
         companyListAdapter arrayAdapter = new companyListAdapter(context, contentInDB);
         list1.setAdapter(arrayAdapter);
+    }
+    public void refreshCompanyDetailDisplay() {
+        if (currentCompanyDBiD > 0) {
+            TextView CompanyName = (TextView) findViewById(R.id.company_name);
+            TextView WebAddr = (TextView) findViewById(R.id.web_address_content);
+            TextView Tel = (TextView) findViewById(R.id.phone_number_content);
+            TextView Addr = (TextView) findViewById(R.id.eddasd);
+            TextView Field = (TextView) findViewById(R.id.education_type_content);
 
+            CompanyInfo currentCompany = ContactDBManager.company_queryByID(currentCompanyDBiD);
+            CompanyName.setText(currentCompany.getName());
+            WebAddr.setText(currentCompany.getWebsite());
+            Tel.setText(currentCompany.getPhone());
+            Addr.setText(currentCompany.getAddress());
+            Field.setText(currentCompany.getField());
+
+            LinearLayout layout = (LinearLayout) findViewById(R.id.company_i);
+            layout.setVisibility(View.VISIBLE);
+            layout = (LinearLayout) findViewById(R.id.add_co_page);
+            layout.setVisibility(View.GONE);
+            layout = (LinearLayout) findViewById(R.id.edit_co_page);
+            layout.setVisibility(View.GONE);
+            layout = (LinearLayout) findViewById(R.id.kddz_page);
+            layout.setVisibility(View.GONE);
+            layout = (LinearLayout) findViewById(R.id.edit_kddz_page);
+            layout.setVisibility(View.GONE);
+            layout = (LinearLayout) findViewById(R.id.shdz_page);
+            layout.setVisibility(View.GONE);
+            layout = (LinearLayout) findViewById(R.id.edit_shdz_page);
+            layout.setVisibility(View.GONE);
+            layout = (LinearLayout) findViewById(R.id.add_ywjc_page);
+            layout.setVisibility(View.GONE);
+            layout = (LinearLayout) findViewById(R.id.add_hdls_page);
+            layout.setVisibility(View.GONE);
+        }
+        else {
+            TextView CompanyName = (TextView) findViewById(R.id.company_name);
+            TextView WebAddr = (TextView) findViewById(R.id.web_address_content);
+            TextView Tel = (TextView) findViewById(R.id.phone_number_content);
+            TextView Addr = (TextView) findViewById(R.id.eddasd);
+            TextView Field = (TextView) findViewById(R.id.education_type_content);
+
+            CompanyName.setText("公司未选择");
+            WebAddr.setText("");
+            Tel.setText("");
+            Addr.setText("");
+            Field.setText("");
+        }
     }
 
     public void refreshCompanyButton(View view) {
@@ -124,6 +205,17 @@ public class main extends Activity {
     public void add_new_company(View view) {
         LinearLayout old_layout = (LinearLayout)findViewById(R.id.company_i);
         LinearLayout new_layout = (LinearLayout)findViewById(R.id.add_co_page);
+        EditText company_name = (EditText) findViewById(R.id.xjgs_gsm_input);
+        EditText tel = (EditText) findViewById(R.id.xjgs_lxdh_input);
+        EditText addr = (EditText) findViewById(R.id.xjgs_dz_input);
+        EditText web = (EditText) findViewById(R.id.xjgs_wz_input);
+        EditText field = (EditText) findViewById(R.id.xjgs_hy_input);
+
+        company_name.setText("");
+        tel.setText("");
+        addr.setText("");
+        web.setText("");
+        field.setText("");
         if(old_layout.getVisibility()==view.VISIBLE){
             old_layout.setVisibility(view.GONE);
             new_layout.setVisibility(view.VISIBLE);
@@ -142,6 +234,14 @@ public class main extends Activity {
         EditText addr = (EditText) findViewById(R.id.xjgs_dz_input);
         EditText web = (EditText) findViewById(R.id.xjgs_wz_input);
         EditText field = (EditText) findViewById(R.id.xjgs_hy_input);
+
+        company_name.setHint("请输入公司名称");
+        tel.setHint("请输入联系电话");
+        addr.setHint("请输入地址");
+        web.setHint("请输入网站地址");
+        field.setHint("请输入产业类型");
+
+
         ArrayList<CompanyInfo> currentCompanyList = new ArrayList<CompanyInfo>();
         CompanyInfo currentCompany = new CompanyInfo();
         currentCompany.setName(company_name.getText().toString());
@@ -157,6 +257,8 @@ public class main extends Activity {
         LinearLayout new_layout = (LinearLayout) findViewById(R.id.company_i);
         old_layout.setVisibility(view.GONE);
         new_layout.setVisibility(view.VISIBLE);
+        refreshCompanyList();
+
     }
 
     //�����༭��˾ҳ
@@ -306,13 +408,12 @@ public class main extends Activity {
 
     @Override
     protected void onResume() {
-        //refreshList();
+        refreshCompanyList();
         super.onResume();
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ContactDBManager.company_deleteAll();
         ContactDBManager.closeDB();
     }
 

@@ -360,6 +360,7 @@ public class mapView extends Activity {
     }
 
     public void contactListButtonOnClick(View view){
+
         Context context = getApplicationContext();
         final ListView myListView = (ListView) findViewById(R.id.poplistView);
 
@@ -372,7 +373,12 @@ public class mapView extends Activity {
         });
         popListAdapter adapter = new popListAdapter(context,ContactList);
         myListView.setAdapter(adapter);
-        myListView.setVisibility(View.VISIBLE);
+        if (myListView.getVisibility() == View.VISIBLE) {
+            myListView.setVisibility(View.GONE);
+        }
+        else {
+            myListView.setVisibility(View.VISIBLE);
+        }
         //地图单击事件
         mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
             @Override

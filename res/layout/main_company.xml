@@ -10,41 +10,67 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="@color/white">
         
 		<!-- sub-title -->
-      	<LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="2" >
-	      
-        	<Button
-                android:id="@+id/link_to_companies"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="10dp"
-                android:layout_weight="1"
-                android:text="公司"
-                android:onClick="refreshCompanyButton"/>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:layout_weight="2"
+                android:background="@color/blue_1">
+            <LinearLayout
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:orientation="horizontal" >
 
-        	<Button
-        	    android:id="@+id/link_to_contacts"
-        	    android:layout_width="wrap_content"
-        	    android:layout_height="30dp"
-        	    android:textSize="10dp"
-        	    android:layout_weight="1"
-        	    android:text="联系人" />
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+            </LinearLayout>
+            <Button
+                    android:id="@+id/link_to_companies"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:padding="2dip"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:text="公司"
+                    android:onClick="refreshCompanyButton"/>
 
-        	<Button        	    
-        	    android:layout_width="wrap_content"
-        	    android:layout_height="30dp"
-        	    android:textSize="10dp"
-        	    android:layout_weight="1"
-        	    android:text="添加" 
-        	    android:onClick="add_new_company" />
+            <Button
+                    android:id="@+id/link_to_contacts"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:padding="2dip"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:text="联系人" />
+
+            <LinearLayout
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="20dip"
+                        android:layout_height="20dip"
+                        android:background="@drawable/icon_adder"
+                        android:onClick="add_new_company" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
+        <TextView
+            android:layout_width="1dip"
+            android:layout_height="fill_parent"
+            android:background="@color/white"/>
         
         <TextView
             android:layout_width="fill_parent"
@@ -54,7 +80,7 @@
             android:text="公司信息" 
             android:textSize="20dip"
             android:textColor="@color/white"
-            android:background="@color/lightskyblue" />
+            android:background="@color/blue_1" />
     </LinearLayout>
 
     <!-- body -->
@@ -415,7 +441,8 @@
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:text="    公司名*" />
+                                android:text="    公司名*"
+                                />
                         <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
@@ -423,7 +450,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-
+                                android:hint="请输入公司名称"
                                 android:id="@+id/xjgs_gsm_input" />
 
                     </LinearLayout>
@@ -447,7 +474,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                                android:hint="请输入联系电话"
                                 android:id="@+id/xjgs_lxdh_input" />
 
                     </LinearLayout>
@@ -471,7 +498,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                                android:hint="请输入公司地址"
                                 android:id="@+id/xjgs_dz_input" />
 
                     </LinearLayout>
@@ -494,7 +521,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                                android:hint="请输入网址"
                                 android:id="@+id/xjgs_wz_input" />
 
                     </LinearLayout>
@@ -518,7 +545,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                                android:hint="请输入产业类型"
                                 android:id="@+id/xjgs_hy_input" />
 
                     </LinearLayout>

@@ -38,6 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "address VARCHAR(50), " +
                 "phone VARCHAR(30), " +
                 "website VARCHAR(50), " +
+                "field VARCHAR(20), " +
                 "billing_address_id INTEGER, " +
                 "contact_id INTEGER, " +
                 "event_id INTEGER, " +

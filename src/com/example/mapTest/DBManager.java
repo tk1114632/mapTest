@@ -135,17 +135,12 @@ public class DBManager {
             for (CompanyInfo company : CompanyList) {
                 //Log.e("=============!!!!!!!!!!!!!!!!", "EEca");
 
-                db.execSQL("INSERT INTO Company(name, address, phone, website,billing_address_id, contact_id, event_id," +
-                        "industry_id, sale_id, shipping_address_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", new Object[]{
-                        company.getName(),company.getAddress(),company.getPhone(),company.getWebsite(),
+                db.execSQL("INSERT INTO Company(name, address, phone, website, field, billing_address_id, contact_id, event_id," +
+                        "industry_id, sale_id, shipping_address_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", new Object[]{
+                        company.getName(),company.getAddress(),company.getPhone(),company.getWebsite(), company.getField(),
                         company.getBilling_address_id(),company.getContact_id(),company.getEvent_id(),company.getIndustry_id(),
                         company.getSale_id(),company.getShipping_address_id()
                 });
-                //Cursor c = db.rawQuery("SELECT _id FROM Company WHERE name=?", new String[]{company.getName()});
-                //company.setDb_id(c.getColumnIndex("_id"));
-
-                //Debug 信息
-                //Log.e("Company name:" + c.getString(c.getColumnIndex("name")), " ============");
             }
             db.setTransactionSuccessful();
         } finally {
@@ -170,8 +165,8 @@ public class DBManager {
     }
 
 
-    public void deleteOldCompany(CompanyInfo company){
-        db.delete("Company", "name=?", new String[]{company.getName()});
+    public void deleteOldCompany(int companyDB_id){
+        db.delete("Company", "_id=?", new String[]{companyDB_id+""});
     }
 
     public void company_deleteAll() {
@@ -193,7 +188,7 @@ public class DBManager {
                 newCompany.setIndustry_id(c.getInt(c.getColumnIndex("industry_id")));
                 newCompany.setSale_id(c.getInt(c.getColumnIndex("sale_id")));
                 newCompany.setShipping_address_id(c.getInt(c.getColumnIndex("shipping_address_id")));
-
+                newCompany.setDb_id(c.getInt(c.getColumnIndex("_id")));
                 currentList.add(newCompany);
             }
         }
@@ -223,6 +218,30 @@ public class DBManager {
         }
         c.close();
         return currentList;
+    }
+
+    public CompanyInfo company_queryByID(int key_name) {
+        Cursor c = db.rawQuery("SELECT * FROM  Company WHERE _id = ?", new String[]{key_name+""});
+        CompanyInfo newCompany =  new CompanyInfo();
+        if (c != null) {
+            while (c.moveToNext()) {
+
+                newCompany.setName(c.getString((c.getColumnIndex("name"))));
+                newCompany.setPhone(c.getString((c.getColumnIndex("phone"))));
+                newCompany.setWebsite(c.getString((c.getColumnIndex("website"))));
+                newCompany.setAddress(c.getString(c.getColumnIndex("address")));
+                newCompany.setField(c.getString(c.getColumnIndex("field")));
+                newCompany.setBilling_address_id(c.getInt((c.getColumnIndex("billing_address_id"))));
+                newCompany.setContact_id(c.getInt((c.getColumnIndex("contact_id"))));
+                newCompany.setEvent_id(c.getInt((c.getColumnIndex("event_id"))));
+                newCompany.setIndustry_id(c.getInt(c.getColumnIndex("industry_id")));
+                newCompany.setSale_id(c.getInt(c.getColumnIndex("sale_id")));
+                newCompany.setShipping_address_id(c.getInt(c.getColumnIndex("shipping_address_id")));
+
+            }
+        }
+        c.close();
+        return newCompany;
     }
     ////////////////////////////////////////////////////////////////////////////////
 

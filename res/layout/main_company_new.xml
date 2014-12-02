@@ -18,27 +18,43 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="2" >
-	      
+        	<LinearLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="30dip"
+		        android:orientation="horizontal"
+		        android:layout_weight="1" >
+		        
+		        <TextView
+		            android:layout_width="fill_parent"
+		            android:layout_height="fill_parent" />
+	        </LinearLayout>
         	<Button
                 android:id="@+id/link_to_companies"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:textSize="10dp"
+                android:layout_height="30dip"
+                android:gravity="center"
+                android:padding="2dip"
+                android:textSize="16dip"
                 android:layout_weight="1"
-                android:text="公司" />
+                android:text="公司"
+                android:onClick="refreshCompanyButton"/>
 
         	<Button
         	    android:id="@+id/link_to_contacts"
         	    android:layout_width="wrap_content"
-        	    android:layout_height="30dp"
-        	    android:textSize="10dp"
+        	    android:layout_height="30dip"
+        	    android:gravity="center"
+                android:padding="2dip"
+                android:textSize="16dip"
         	    android:layout_weight="1"
         	    android:text="联系人" />
 
         	<Button        	    
         	    android:layout_width="wrap_content"
-        	    android:layout_height="30dp"
-        	    android:textSize="10dp"
+        	    android:layout_height="30dip"
+        	    android:gravity="center"
+                android:padding="2dip"
+                android:textSize="16dip"
         	    android:layout_weight="1"
         	    android:text="添加" 
         	    android:onClick="add_new_company" />
@@ -76,14 +92,14 @@
 			
 	        <!-- list -->
 
-            <ListView
-                    android:id="@+id/companies_List"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:clickable="true"
-                    android:cacheColorHint="@color/white"
-                    android:divider="@color/white"
-                    />
+	        <ListView
+	            android:id="@+id/companies_List"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:clickable="true"
+                android:cacheColorHint="@color/white"
+                android:divider="@color/white"
+                />
 	      
         </LinearLayout>
         
@@ -291,7 +307,7 @@
                                 android:text="新建"
                                 android:textColor="@color/blue"
                                 android:textSize="20dip"
-                                  />
+                                android:onClick="Turn_to_add_contact_page"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -387,8 +403,8 @@
 
                         <TextView
                                 android:layout_width="100dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
                                 android:textColor="@color/black"
                                 android:layout_weight="1"
                                 android:text="公司信息"
@@ -396,8 +412,8 @@
 
                         <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
                                 android:textColor="@color/black"
                                 android:text="*必填信息"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -409,7 +425,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -433,7 +449,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -446,7 +462,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                               
                                 android:id="@+id/xjgs_lxdh_input" />
 
                     </LinearLayout>
@@ -457,7 +473,30 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    地址" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"
+                               
+                                android:id="@+id/xjgs_dz_input" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -470,7 +509,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                              
                                 android:id="@+id/xjgs_wz_input" />
 
                     </LinearLayout>
@@ -481,7 +520,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -493,8 +532,7 @@
                                 android:textSize="15dip"
                                 android:paddingTop="0dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education"
+                                android:singleLine="true"                                
                                 android:id="@+id/xjgs_hy_input" />
 
                     </LinearLayout>
@@ -540,8 +578,8 @@
 
                         <TextView
                                 android:layout_width="100dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
                                 android:textColor="@color/black"
                                 android:layout_weight="1"
                                 android:text="公司信息"
@@ -562,7 +600,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -586,7 +624,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -602,6 +640,29 @@
                                 android:text="    联系电话" />
 
                     </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    地址" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"
+                                android:text="    地址" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                             android:layout_width="match_parent"
@@ -609,7 +670,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -632,7 +693,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -676,36 +737,36 @@
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal" >                       
+                            android:orientation="horizontal" >
 
                         <Button
-                               android:layout_width="wrap_content"
+                                android:layout_width="wrap_content"
                                 android:layout_height="30dip"
                                 android:textColor="@color/blue"
                                 android:background="@color/white"
                                 android:textSize="20dip"
                                 android:layout_weight="1"
                                 android:gravity="left"
-                                android:text="  返回公司" 
-                                
+                                android:text="  返回公司"
+
                                 android:onClick="Kddz_page_back"/>
-                        
+
                         <Button
-                               android:layout_width="wrap_content"
+                                android:layout_width="wrap_content"
                                 android:layout_height="30dip"
                                 android:textColor="@color/blue"
                                 android:background="@color/white"
                                 android:textSize="20dip"
                                 android:text="编辑"
-                                
+
                                 android:onClick="Turn_to_edit_kddz_page" />
                     </LinearLayout>
 
                     <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
+                            android:layout_height="50dip"
                             android:textColor="@color/black"
-                            android:textSize="20dip"
+                            android:textSize="25dip"
                             android:text="开单地址信息" />
 
                     <LinearLayout
@@ -713,21 +774,21 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
                                 android:textSize="20dip"
                                 android:text="    开单国家"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         <TextView
-                                android:id="@+id/educa"
+                                
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    开单国家内容" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -735,7 +796,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
 
@@ -750,7 +811,7 @@
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    开单省/市内容" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -758,10 +819,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
-
                                 android:textSize="20dip"
                                 android:text="    开单城市"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -770,10 +830,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
-
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    开单城市内容" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -781,7 +840,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
 
@@ -796,14 +855,14 @@
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    开单地址内容" />
                     </LinearLayout>
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
 
@@ -815,15 +874,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
-
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    开单邮政编码内容" />
                     </LinearLayout>
                 </LinearLayout>
                 <!-- details 开单地址查看end-->
-                
-				<!-- details 开单地址编辑-->
+
+                <!-- details 开单地址编辑-->
                 <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -846,7 +904,7 @@
                                 android:textSize="20dip"
                                 android:layout_weight="1"
                                 android:gravity="left"
-                                android:text="  返回" 
+                                android:text="  返回"
                                 android:onClick="edit_kddz_page_back" />
 
                         <Button
@@ -861,10 +919,10 @@
 
                     <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
+                            android:layout_height="50dip"
                             android:textColor="@color/black"
 
-                            android:textSize="20dip"
+                            android:textSize="25dip"
                             android:text="开单地址信息" />
 
                     <LinearLayout
@@ -872,7 +930,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
                                 android:textSize="20dip"
@@ -887,8 +945,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education"  />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -896,14 +953,14 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
 
                                 android:textSize="20dip"
                                 android:text="    开单省/市"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
-                       <EditText
+                        <EditText
 
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
@@ -912,8 +969,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"                               
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -921,10 +977,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
-
                                 android:textSize="20dip"
                                 android:text="    开单城市"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -937,9 +992,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                            
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -947,7 +1000,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
 
@@ -963,16 +1016,15 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                            
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
+                    
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
 
@@ -987,12 +1039,11 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"                           
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
                 </LinearLayout>
                 <!-- details 开单地址编辑end-->
-				
+
 
                 <!-- 收货地址查看 -->
                 <LinearLayout
@@ -1030,17 +1081,17 @@
 
                     <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
+                            android:layout_height="50dip"
                             android:textColor="@color/black"
                             android:text="  收货地址信息"
-                            android:textSize="20dip"/>
+                            android:textSize="25dip"/>
 
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:text="    收货国家"
@@ -1053,7 +1104,7 @@
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    收货国家内容" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1061,7 +1112,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1075,7 +1126,7 @@
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    收货省/市内容" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1083,7 +1134,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1097,7 +1148,7 @@
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    收货城市内容" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1105,7 +1156,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1119,7 +1170,7 @@
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    收货地址内容" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1127,7 +1178,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1141,13 +1192,13 @@
 
                                 android:textSize="20dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                android:text="    收货邮政编码内容" />
                     </LinearLayout>
                 </LinearLayout>
                 <!-- 收货地址查看end -->
 
-				
-				<!-- 收货地址编辑 -->
+
+                <!-- 收货地址编辑 -->
                 <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -1183,24 +1234,24 @@
 
                     <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="30dip"
+                            android:layout_height="50dip"
                             android:textColor="@color/black"
                             android:text="  收货地址信息"
-                            android:textSize="20dip"/>
+                            android:textSize="25dip"/>
 
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:text="    收货国家"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
-                       
-                               
+
+
                         <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
@@ -1209,8 +1260,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1218,13 +1268,13 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    收货省/市"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
-                          <EditText
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="15dip"
@@ -1232,8 +1282,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1241,13 +1290,13 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    收货城市"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
-                          <EditText
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="15dip"
@@ -1255,8 +1304,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1264,13 +1312,13 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    收货地址"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
-                          <EditText
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="15dip"
@@ -1278,8 +1326,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1287,13 +1334,13 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="150dip"
+                                android:layout_width="200dip"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    收货邮政编码"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
-                         <EditText
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="15dip"
@@ -1301,22 +1348,499 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education" />
+                                android:singleLine="true" />
                     </LinearLayout>
                 </LinearLayout>
                 <!-- 收货地址编辑end -->
-                
-                
-                
-				<!-- details 新建联系人-->  
-		       
-				<!-- details 新建联系人end -->
-				
-				
-				
-				
-    
+
+
+
+                <!-- details 新建联系人-->
+				<LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:id ="@+id/add_contact_page"
+                        android:visibility="gone" >
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:textSize="20dip"
+                            android:textColor="@color/blue"
+                            android:text="返回"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:padding="0dip"
+                            android:onClick="Add_contact_page_back"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="联系人信息"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:textColor="@color/black"
+                                android:text="*必填信息"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    姓氏*" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"
+                                android:id="@+id/xjlxr_xs_input" /> <!-- 新建联系人_姓氏 -->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    名字" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"
+                               
+                                android:id="@+id/xjlsr_mz_input" /> <!-- 新建联系人_名字 -->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    职务" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"
+                               
+                                android:id="@+id/xjlxr_zw_input" /> <!-- 新建联系人_职务 -->
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电子邮箱（工作）" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                              
+                                android:id="@+id/xjlxr_dzyj_gz_input" /> <!-- 新建联系人_电子邮件_工作 -->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电子邮箱（私人）" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/xjlxr_dzyj_sr_input" /> <!-- 新建联系人_电子邮件_私人 -->
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    手机" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/xjlxr_sj_input" /> <!-- 新建联系人_手机 -->
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电话（工作）" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/xjlxr_dh_gz_input" /> <!-- 新建联系人_电话（工作） -->
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电话（私人）" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/xjlxr_dh_sr_input" /> <!-- 新建联系人_电话（私人） -->
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    备注" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/xjlxr_bz_input" /> <!-- 新建联系人_备注 -->
+                    </LinearLayout>
+                    
+                    <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:gravity="bottom"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="即时通信"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    QQ" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/jstx_qq_input" /> <!-- 即时通信_QQ -->
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    WeChat" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/jstx_wc_input" /> <!-- 即时通信_WeChat -->
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    Skype" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/jstx_sk_input" /> <!-- 即时通信_Skype -->
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    Weibo" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/jstx_wb_input" /> <!-- 即时通信_Weibo -->
+                    </LinearLayout>
+                    
+                    <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:gravity="bottom"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="地址信息"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    国家" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/dzxx_gj_input" /> <!-- 地址信息_国家 -->
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    省/市" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/dzxx_ss_input" /> <!-- 地址信息_省/市-->
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    城市" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/dzxx_cs_input" /> <!-- 地址信息_城市 -->
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    地址" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/dzxx_dz_input" /> <!-- 地址信息_地址 -->
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    邮政编码" />
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="15dip"
+                                android:paddingTop="0dip"
+                                android:paddingLeft="10dip"
+                                android:singleLine="true"                                
+                                android:id="@+id/dzxx_yzbm_input" /> <!-- 地址信息_邮政编码 -->
+                    </LinearLayout> 
+
+                    <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:textSize="20dip"
+                            android:padding="0dip"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:textColor="@color/blue"
+                            android:text="        保存并新建"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:onClick="add_contact_page_save_and_new" />
+
+                </LinearLayout>
+                <!-- details 新建联系人end -->
+
+
+
+
+
                 <!-- 添加业务进程 -->
                 <LinearLayout
                         android:layout_width="fill_parent"
@@ -1334,7 +1858,7 @@
                             android:text="返回公司"
                             android:textSize="20dip"
                             android:onClick="Ywjc_page_back" />
-
+                    
                     <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1342,17 +1866,17 @@
 
                         <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="30dip"
+                                android:layout_height="50dip"
                                 android:layout_weight="1"
                                 android:text="    业务信息"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/black"
-                                android:textSize="20dip" />
+                                android:textSize="25dip" />
 
                         <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
                                 android:textColor="@color/black"
                                 android:text="*必填信息" />
                     </LinearLayout>
@@ -1362,7 +1886,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="30dip"
                                 android:textColor="@color/black"
                                 android:textSize="20dip"
@@ -1378,7 +1902,7 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                               
                                 android:id="@+id/ywjc_ywmc"/>
                     </LinearLayout>
 
@@ -1387,7 +1911,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:textColor="@color/black"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
@@ -1402,7 +1926,7 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                            
                                 android:id="@+id/ywjc_knx" />
                     </LinearLayout>
 
@@ -1412,7 +1936,7 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:text="金额"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -1429,7 +1953,7 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                               
                                 android:id="@+id/ywjc_je" />
                     </LinearLayout>
 
@@ -1438,7 +1962,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:textSize="20dip"
@@ -1454,7 +1978,7 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                             
                                 android:id="@+id/ywjc_ms"  />
                     </LinearLayout>
 
@@ -1463,7 +1987,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:textSize="20dip"
@@ -1478,7 +2002,7 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                               
                                 android:id="@+id/ywjc_jc" />
                     </LinearLayout>
 
@@ -1487,7 +2011,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
                                 android:textSize="20dip"
@@ -1503,7 +2027,7 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education"
+                               
                                 android:id="@+id/ywjc_jsrq" />
                     </LinearLayout>
 
@@ -1543,11 +2067,11 @@
 
                         <TextView
                                 android:layout_weight="1"
-                                android:layout_height="wrap_content"
+                                android:layout_height="50dip"
                                 android:layout_width="wrap_content"
                                 android:text="新建活动"
                                 android:textColor="@color/black"
-                                android:textSize="20dip" />
+                                android:textSize="25dip" />
 
                         <TextView
 
@@ -1564,7 +2088,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1588,7 +2112,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1603,8 +2127,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1612,7 +2135,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1626,8 +2149,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1635,7 +2157,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1650,9 +2172,7 @@
                                 android:paddingTop="0dip"
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
-                                android:singleLine="true"
-                                android:text="education"
-                                />
+                                android:singleLine="true" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1660,7 +2180,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:text="日期"
@@ -1675,7 +2195,7 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                                />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1683,7 +2203,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal" >
                         <TextView
-                                android:layout_width="100dp"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
@@ -1698,20 +2218,20 @@
                                 android:paddingBottom="5dip"
                                 android:paddingLeft="10dip"
                                 android:singleLine="true"
-                                android:text="education" />
+                               />
                     </LinearLayout>
-                    
-                        <Button
 
-                                android:layout_width="wrap_content"
-                                android:layout_height="30dip"
-                                android:layout_weight="1"
-                                android:text="保存并新建"
-                                android:background="@color/white"
-                                android:textColor="@color/blue"
-                                android:textSize="20dip" />
-                       
-                   
+                    <Button
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dip"
+                            android:layout_weight="1"
+                            android:text="保存并新建"
+                            android:background="@color/white"
+                            android:textColor="@color/blue"
+                            android:textSize="20dip" />
+
+
                 </LinearLayout>
                 <!-- 添加活动历史 end -->
 
@@ -1747,6 +2267,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:onClick="toMapViewButton"
             android:text="GPS" />
 
         <Button

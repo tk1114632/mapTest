@@ -12,19 +12,29 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/white"
-            android:paddingRight="10dp"
-            android:textSize="22dip"
-            android:text="    "/>
+            android:textSize="20dip"/>
     <TextView
             android:id="@+id/company_item_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/black"
-            android:paddingRight="10dp"
             android:textSize="20dip"
+            android:layout_weight="1"
             android:text="宋明亨"/>
-
+    <ImageView
+            android:layout_width="15dip"
+            android:layout_height="10dip"
+            android:background="@drawable/icon_arrow_un"
+            android:layout_gravity="center"
+            />
+    <TextView
+            android:id="@+id/blank2"
+            android:layout_width="5dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20dip"/>
 
 
 </LinearLayout>
