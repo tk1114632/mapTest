@@ -12,54 +12,63 @@
       </filter>
     </filters>
   </component>
-  <component name="AndroidDataSourceStorage">
-    <data-sources>
-      <data-source>
-        <classpath-elements>
-          <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea13/jdbc-drivers/xerial-sqlite-license.txt</url>
-        </classpath-elements>
-        <classpath-elements>
-          <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea13/jdbc-drivers/sqlite-jdbc-3.7.6.3-20110609.081603-3.jar</url>
-        </classpath-elements>
-        <option name="databaseName" value="text.db-journal" />
-        <option name="deviceId" value="SERIAL_NUMBER_4d00605c2b4450bf" />
-        <option name="name" value="Android SQLite" />
-        <option name="packageName" value="com.example.mapTest" />
-      </data-source>
-      <data-source>
-        <classpath-elements>
-          <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea13/jdbc-drivers/xerial-sqlite-license.txt</url>
-        </classpath-elements>
-        <classpath-elements>
-          <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea13/jdbc-drivers/sqlite-jdbc-3.7.6.3-20110609.081603-3.jar</url>
-        </classpath-elements>
-        <option name="databaseName" value="text1.db" />
-        <option name="deviceId" value="SERIAL_NUMBER_4d00605c2b4450bf" />
-        <option name="name" value="Android SQLite" />
-        <option name="packageName" value="com.example.mapTest" />
-      </data-source>
-    </data-sources>
-  </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
-      <GlobalState />
+      <GlobalState>
+        <option name="showEffects" value="false" />
+        <option name="visible" value="false" />
+      </GlobalState>
     </option>
   </component>
   <component name="AndroidLayouts">
     <shared>
       <config>
         <devices>
+          <device id="tv_720p" />
           <device id="Nexus 4" />
-          <device id="4&quot; WVGA (Nexus S)" />
-          <device id="Nexus 5" />
+          <device id="Nexus 7" />
+          <device id="Nexus 10" />
           <device id="Nexus One" />
+          <device id="Nexus 5" />
+          <device id="4&quot; WVGA (Nexus S)" />
           <device id="Nexus S" />
-          <device id="tv_1080p" />
+          <device id="Galaxy Nexus" />
           <device id="Nexus 7 2013" />
         </devices>
+        <target>android-19</target>
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/res/layout-land/main_company.xml">
+        <config>
+          <theme>@android:style/Theme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/add_contact_fromCompany.xml">
+        <config>
+          <theme>@android:style/Theme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/add_contact_from_contact.xml">
+        <config>
+          <theme>@android:style/Theme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/company_item_list.xml">
+        <config>
+          <theme>@android:style/Theme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/display_contact_edit.xml">
+        <config>
+          <theme>@android:style/Theme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/display_contact_info.xml">
+        <config>
+          <theme>@android:style/Theme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/res/layout/item_list.xml">
         <config>
           <theme>@android:style/Theme</theme>
@@ -72,8 +81,7 @@
       </layout>
       <layout url="file://$PROJECT_DIR$/res/layout/main_company.xml">
         <config>
-          <state>Landscape</state>
-          <theme>@android:style/Theme</theme>
+          <theme>@android:style/Theme.Black.NoTitleBar</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/res/layout/main_company_new.xml">
@@ -97,6 +105,9 @@
     <list default="true" id="ca4b21d3-c3d0-4cdd-b5fa-d00e05403828" name="Default" comment="" />
     <ignored path="mapTest.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,16 +127,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main_company.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/layout/main_company.xml">
+      <file leaf-file-name="main_company.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/layout-land/main_company.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5638766" vertical-offset="344" max-vertical-offset="27270">
-              <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.3318584" vertical-offset="2880" max-vertical-offset="35475">
+              <caret line="202" column="24" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
               <folding />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1620">
+              <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3480" max-vertical-offset="8925">
+              <caret line="592" column="37" selection-start-line="592" selection-start-column="37" selection-end-line="592" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="display_contact_info.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/display_contact_info.xml">
           <provider editor-type-id="android-designer">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="25.0" vertical-offset="1470" max-vertical-offset="6840">
+              <caret line="48" column="64" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="company_item_list.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/company_item_list.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="60" max-vertical-offset="720">
+              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_company.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/main_company.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-98.333336" vertical-offset="30200" max-vertical-offset="34440">
+              <caret line="2213" column="45" selection-start-line="2213" selection-start-column="45" selection-end-line="2213" selection-end-column="45" />
+              <folding>
+                <element signature="n#TextView#0;n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="display_contact_edit.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/display_contact_edit.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="7080">
+              <caret line="8" column="48" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add_contact_from_contact.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/add_contact_from_contact.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.285714" vertical-offset="323" max-vertical-offset="7620">
+              <caret line="45" column="78" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="78" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -142,40 +240,25 @@
     <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/MyActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/map.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/DemoApplication.java" />
-        <option value="db-console:/13440f58/39bd7641-0507-4e3b-9dee-873069243414/" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/Database.java" />
-        <option value="$PROJECT_DIR$/res/layout/newcontact.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/newContact.java" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/rankDistance.java" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/compareTest.java" />
-        <option value="$PROJECT_DIR$/res/layout/poplistview.xml" />
-        <option value="$PROJECT_DIR$/res/layout/mapview.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/popListAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/ContactInfo.java" />
-        <option value="$PROJECT_DIR$/res/layout/item_list.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/CompanyInfo.java" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/companyListAdapter.java" />
-        <option value="$PROJECT_DIR$/res/layout/company_item_list.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/mapView.java" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/DBHelper.java" />
-        <option value="$PROJECT_DIR$/src/com/example/mapTest/DBManager.java" />
+        <option value="$PROJECT_DIR$/res/layout/add_contact_fromContact.xml" />
+        <option value="$PROJECT_DIR$/res/layout/add_contact_fromCompany.xml" />
+        <option value="$PROJECT_DIR$/res/layout-land/main_company.xml" />
+        <option value="$PROJECT_DIR$/res/layout/display_contact_info.xml" />
+        <option value="$PROJECT_DIR$/res/layout/display_contact_edit.xml" />
+        <option value="$PROJECT_DIR$/res/layout/add_contact_from_contact.xml" />
         <option value="$PROJECT_DIR$/src/com/example/mapTest/main.java" />
-        <option value="$PROJECT_DIR$/res/layout/main_company_new.xml" />
-        <option value="$PROJECT_DIR$/res/layout/main_company.xml" />
       </list>
     </option>
   </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="41" />
+    <option name="x" value="43" />
     <option name="y" value="23" />
-    <option name="width" value="1399" />
+    <option name="width" value="1397" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -206,7 +289,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -227,6 +309,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mapTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -275,13 +393,10 @@
               <option name="myItemId" value="gen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -308,17 +423,19 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="DDMS&#9;PSI&#9;JAVA://org.apache.harmony.dalvik.ddmc.DdmServer" />
     <property name="dynamic.classpath" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.STATE" value="right" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.STATE" value="left" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.mapTest" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/layout" />
       <recent name="$PROJECT_DIR$/res/drawable-xhdpi" />
       <recent name="$PROJECT_DIR$/res/drawable-mdpi" />
       <recent name="$PROJECT_DIR$/res/drawable-hdpi" />
       <recent name="$PROJECT_DIR$/res/drawable-ldpi" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/res/layout" />
@@ -326,12 +443,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Android Application.mapTest">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -340,14 +451,6 @@
       <setting name="passParentEnv" value="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -364,9 +467,9 @@
       <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -413,6 +516,9 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -469,6 +575,27 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
       <method />
     </configuration>
     <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
@@ -539,12 +666,6 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="false" name="mapTest" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="mapTest" />
       <option name="ACTIVITY_CLASS" value="com.example.mapTest.main" />
@@ -588,6 +709,7 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="ca4b21d3-c3d0-4cdd-b5fa-d00e05403828" name="Default" comment="" />
       <created>1413878741170</created>
+      <option name="number" value="Default" />
       <updated>1413878741170</updated>
       <workItem from="1413878749891" duration="1834000" />
       <workItem from="1413881974650" duration="171000" />
@@ -628,41 +750,49 @@
       <workItem from="1417420570183" duration="5955000" />
       <workItem from="1417447287334" duration="9027000" />
       <workItem from="1417529802204" duration="2083000" />
-      <workItem from="1417531950071" duration="1947000" />
+      <workItem from="1417531950071" duration="3568000" />
+      <workItem from="1417535551523" duration="1324000" />
+      <workItem from="1417536915760" duration="1740000" />
+      <workItem from="1417538866530" duration="7162000" />
+      <workItem from="1417608517300" duration="59000" />
+      <workItem from="1417608641258" duration="6264000" />
+      <workItem from="1417617939493" duration="8350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152436000" />
+    <option name="totallyTimeSpent" value="178956000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="41" y="23" width="1399" height="877" extended-state="6" />
+    <frame x="43" y="23" width="1397" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24910523" sideWeight="0.500956" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14817466" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24910523" sideWeight="0.49904397" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992327" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32880628" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14857143" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32856122" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39897698" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992327" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33248082" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33120206" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494639" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992327" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -698,21 +828,32 @@
       </breakpoints>
       <option name="time" value="50" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/main_company.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="27195">
-          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5475" max-vertical-offset="6510">
+          <caret line="365" column="5" selection-start-line="365" selection-start-column="5" selection-end-line="365" selection-end-column="5" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main_company.xml">
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="27195">
+          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <folding>
+            <element signature="n#TextView#0;n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/baidumapapi_v3_1_1.jar!/com/baidu/mapapi/map/BaiduMap.class">
@@ -839,14 +980,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/newcontact.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42459396" vertical-offset="1617" max-vertical-offset="2100">
           <caret line="120" column="38" selection-start-line="120" selection-start-column="38" selection-end-line="120" selection-end-column="38" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/custom_loc.png">
@@ -870,22 +1011,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/location_tips.9.png">
-      <provider editor-type-id="images">
+      <provider selected="true" editor-type-id="ninepatcheditor">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="ninepatcheditor">
+      <provider editor-type-id="images">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/mapview.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51715684" vertical-offset="1484" max-vertical-offset="1905">
           <caret line="113" column="38" selection-start-line="113" selection-start-column="38" selection-end-line="113" selection-end-column="38" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/rankDistance.java">
@@ -899,14 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1110">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="1605">
-          <caret line="30" column="52" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -931,47 +1064,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/item_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4655582" vertical-offset="134" max-vertical-offset="615">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/popListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
           <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="3015">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/company_item_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.777779" vertical-offset="0" max-vertical-offset="675">
-          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/companyListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1005,24 +1101,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40835267" vertical-offset="334" max-vertical-offset="840">
           <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="5985">
-          <caret line="74" column="38" selection-start-line="74" selection-start-column="38" selection-end-line="74" selection-end-column="38" />
-          <folding>
-            <element signature="e#1320#1690#0" expanded="false" />
-            <element signature="e#1679#1680#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1042,35 +1127,141 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main_company_new.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29955947" vertical-offset="89" max-vertical-offset="8985">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="61" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.28907922" vertical-offset="0" max-vertical-offset="467">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="83" selection-end-column="19" />
           <folding>
-            <element signature="tag#LinearLayout#0;tag#LinearLayout#0;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#2;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#3;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#4;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#5;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#6;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#7;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#8;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
-            <element signature="tag#LinearLayout#9;tag#LinearLayout#0;tag#ScrollView#0;tag#LinearLayout#1;tag#LinearLayout#0" expanded="false" />
+            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#0;n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#TextView#0;n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#1;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#2;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#3;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#4;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#5;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#6;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#7;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#8;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#9;n#LinearLayout#0;n#ScrollView#0;n#LinearLayout#1;n#LinearLayout#0;n#!!top" expanded="false" />
+            <element signature="n#LinearLayout#2;n#LinearLayout#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/item_list.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main_company.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5638766" vertical-offset="344" max-vertical-offset="27270">
-          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+        <state vertical-scroll-proportion="-8.925926" vertical-offset="89" max-vertical-offset="615">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30364373" vertical-offset="30" max-vertical-offset="3015">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/companyListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.030303" vertical-offset="15" max-vertical-offset="720">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/company_item_list.xml">
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="720">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1620">
+          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/display_contact_edit.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="7080">
+          <caret line="8" column="48" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/display_contact_info.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="25.0" vertical-offset="1470" max-vertical-offset="6840">
+          <caret line="48" column="64" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/add_contact_from_contact.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.285714" vertical-offset="323" max-vertical-offset="7620">
+          <caret line="45" column="78" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/mapTest/main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3480" max-vertical-offset="8925">
+          <caret line="592" column="37" selection-start-line="592" selection-start-column="37" selection-end-line="592" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main_company.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-98.333336" vertical-offset="30200" max-vertical-offset="34440">
+          <caret line="2213" column="45" selection-start-line="2213" selection-start-column="45" selection-end-line="2213" selection-end-column="45" />
+          <folding>
+            <element signature="n#TextView#0;n#LinearLayout#0;n#LinearLayout#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout-land/main_company.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3318584" vertical-offset="2880" max-vertical-offset="35475">
+          <caret line="202" column="24" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
@@ -1161,4 +1352,3 @@
     </states>
   </component>
 </project>
-

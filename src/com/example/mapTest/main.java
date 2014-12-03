@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,12 @@ public class main extends Activity {
     ListView list1;
     ArrayList<CompanyInfo> contentInDB;
     int currentCompanyDBiD = 0;
+    View lastItemSelectedView;
+    View currentViewCompany;
+    View currentViewContact;
+    int lastItemPosition;
+    boolean companyMode;
+
 
 
 
@@ -42,12 +49,30 @@ public class main extends Activity {
         Context context = getApplicationContext();
         companyListAdapter arrayAdapter = new companyListAdapter(context, contentInDB);
         list1.setAdapter(arrayAdapter);
+        refreshCompanyDetailDisplay();
+        currentViewContact = findViewById(R.id.display_contact_info_page);
+        companyMode = true;
+
+
         //短按
         list1.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 currentCompanyDBiD = contentInDB.get(position).getDb_id();
                 Log.e("","DBID ========"+contentInDB.get(position).getDb_id());
+
+                if (lastItemSelectedView != null) {
+                    if (lastItemPosition%2 == 1){
+                        lastItemSelectedView.setBackgroundColor(getResources().getColor(R.color.white));
+                    }
+                    else {
+                        lastItemSelectedView.setBackgroundColor(getResources().getColor(R.color.grey_3));
+                    }
+                }
+
+                view.setBackgroundColor(getResources().getColor(R.color.grey_2));
+                lastItemSelectedView = view;
+                lastItemPosition = position;
                 refreshCompanyDetailDisplay();
             }
         });
@@ -64,15 +89,15 @@ public class main extends Activity {
                                 ContactDBManager.deleteOldCompany(contentInDB.get(position).getDb_id());
                                 refreshCompanyList();
                                 currentCompanyDBiD = 0;
+                                refreshCompanyDetailDisplay();
                             }
                         })
                         .setIcon(R.drawable.ic_launcher)
                         .show();
-
-                return false;
+                return true;
             }
         });
-        refreshCompanyDetailDisplay();
+
 
     }
 
@@ -145,6 +170,12 @@ public class main extends Activity {
         list1.setAdapter(arrayAdapter);
     }
     public void refreshCompanyDetailDisplay() {
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(View.VISIBLE);
+        currentViewCompany = newView;
         if (currentCompanyDBiD > 0) {
             TextView CompanyName = (TextView) findViewById(R.id.company_name);
             TextView WebAddr = (TextView) findViewById(R.id.web_address_content);
@@ -153,30 +184,14 @@ public class main extends Activity {
             TextView Field = (TextView) findViewById(R.id.education_type_content);
 
             CompanyInfo currentCompany = ContactDBManager.company_queryByID(currentCompanyDBiD);
+            Log.e("=========","=="+currentCompany.getName());
             CompanyName.setText(currentCompany.getName());
             WebAddr.setText(currentCompany.getWebsite());
             Tel.setText(currentCompany.getPhone());
             Addr.setText(currentCompany.getAddress());
             Field.setText(currentCompany.getField());
 
-            LinearLayout layout = (LinearLayout) findViewById(R.id.company_i);
-            layout.setVisibility(View.VISIBLE);
-            layout = (LinearLayout) findViewById(R.id.add_co_page);
-            layout.setVisibility(View.GONE);
-            layout = (LinearLayout) findViewById(R.id.edit_co_page);
-            layout.setVisibility(View.GONE);
-            layout = (LinearLayout) findViewById(R.id.kddz_page);
-            layout.setVisibility(View.GONE);
-            layout = (LinearLayout) findViewById(R.id.edit_kddz_page);
-            layout.setVisibility(View.GONE);
-            layout = (LinearLayout) findViewById(R.id.shdz_page);
-            layout.setVisibility(View.GONE);
-            layout = (LinearLayout) findViewById(R.id.edit_shdz_page);
-            layout.setVisibility(View.GONE);
-            layout = (LinearLayout) findViewById(R.id.add_ywjc_page);
-            layout.setVisibility(View.GONE);
-            layout = (LinearLayout) findViewById(R.id.add_hdls_page);
-            layout.setVisibility(View.GONE);
+
         }
         else {
             TextView CompanyName = (TextView) findViewById(R.id.company_name);
@@ -185,11 +200,11 @@ public class main extends Activity {
             TextView Addr = (TextView) findViewById(R.id.eddasd);
             TextView Field = (TextView) findViewById(R.id.education_type_content);
 
-            CompanyName.setText("公司未选择");
-            WebAddr.setText("");
-            Tel.setText("");
-            Addr.setText("");
-            Field.setText("");
+            CompanyName.setText("公司信息");
+            WebAddr.setText("暂无");
+            Tel.setText("暂无");
+            Addr.setText("暂无");
+            Field.setText("暂无");
         }
     }
 
@@ -197,36 +212,96 @@ public class main extends Activity {
         refreshCompanyList();
     }
 
+    public void companyOnclick(View view) {
+        TextView companyText = (TextView) findViewById(R.id.link_to_companies);
+        TextView contactText = (TextView) findViewById(R.id.link_to_contacts);
+        if (companyText.getCurrentTextColor() == getResources().getColor(R.color.blue_1)) {
+            return;
+        }
+        contactText.setBackgroundColor(getResources().getColor(R.color.blue_1));
+        contactText.setTextColor(getResources().getColor(R.color.grey_3));
+        companyText.setBackgroundColor(getResources().getColor(R.color.white));
+        companyText.setTextColor(getResources().getColor(R.color.blue_1));
+        LinearLayout layout = (LinearLayout) findViewById(R.id.companyDetail);
+        layout.setVisibility(View.VISIBLE);
+        layout = (LinearLayout) findViewById(R.id.contactDetail);
+        layout.setVisibility(View.GONE);
+        companyMode = true;
+    }
+
+    public void contactOnclick(View view) {
+        TextView companyText = (TextView) findViewById(R.id.link_to_companies);
+        TextView contactText = (TextView) findViewById(R.id.link_to_contacts);
+        if (contactText.getCurrentTextColor() == getResources().getColor(R.color.blue_1)) {
+            return;
+        }
+        contactText.setBackgroundColor(getResources().getColor(R.color.white));
+        contactText.setTextColor(getResources().getColor(R.color.blue_1));
+        companyText.setBackgroundColor(getResources().getColor(R.color.blue_1));
+        companyText.setTextColor(getResources().getColor(R.color.grey_3));
+        LinearLayout layout = (LinearLayout) findViewById(R.id.companyDetail);
+        layout.setVisibility(View.GONE);
+        layout = (LinearLayout) findViewById(R.id.contactDetail);
+        layout.setVisibility(View.VISIBLE);
+        companyMode = false;
+    }
+
     public void toMapViewButton(View view){
         Intent i = new Intent(main.this , mapView.class);
         startActivity(i);
     }
 
-    public void add_new_company(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.company_i);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.add_co_page);
-        EditText company_name = (EditText) findViewById(R.id.xjgs_gsm_input);
-        EditText tel = (EditText) findViewById(R.id.xjgs_lxdh_input);
-        EditText addr = (EditText) findViewById(R.id.xjgs_dz_input);
-        EditText web = (EditText) findViewById(R.id.xjgs_wz_input);
-        EditText field = (EditText) findViewById(R.id.xjgs_hy_input);
+    public void add_new_companyorContact(View view) {
+        if (companyMode) {
+            View newView = findViewById(R.id.add_co_page);
+            EditText company_name = (EditText) findViewById(R.id.xjgs_gsm_input);
+            EditText tel = (EditText) findViewById(R.id.xjgs_lxdh_input);
+            EditText addr = (EditText) findViewById(R.id.xjgs_dz_input);
+            EditText web = (EditText) findViewById(R.id.xjgs_wz_input);
+            EditText field = (EditText) findViewById(R.id.xjgs_hy_input);
 
-        company_name.setText("");
-        tel.setText("");
-        addr.setText("");
-        web.setText("");
-        field.setText("");
-        if(old_layout.getVisibility()==view.VISIBLE){
-            old_layout.setVisibility(view.GONE);
-            new_layout.setVisibility(view.VISIBLE);
+            company_name.setText("");
+            tel.setText("");
+            addr.setText("");
+            web.setText("");
+            field.setText("");
+            if (currentViewCompany != null) {
+                currentViewCompany.setVisibility(View.GONE);
+            }
+            newView.setVisibility(view.VISIBLE);
+            currentViewCompany = newView;
         }
+        else {
+
+            EditText lastname = (EditText) findViewById(R.id.xjlxr_xs_input);
+            EditText firstname = (EditText) findViewById(R.id.xjlxr_xs_input);
+            EditText zw = (EditText) findViewById(R.id.xjlxr_zw_input);
+            EditText gzyx= (EditText) findViewById(R.id.xjlxr_dzyj_gz_input);
+            EditText sryx = (EditText) findViewById(R.id.xjlxr_dzyj_sr_input);
+            EditText phone = (EditText) findViewById(R.id.xjlxr_sj_input);
+            EditText tel_gz = (EditText) findViewById(R.id.xjlxr_dh_gz_input);
+            EditText tel_sr = (EditText) findViewById(R.id.xjlxr_dh_sr_input);
+
+
+
+
+            View newView = findViewById(R.id.add_contact_fromContact);
+            if (currentViewContact != null) {
+                currentViewContact.setVisibility(View.GONE);
+            }
+            newView.setVisibility(View.VISIBLE);
+            currentViewContact = newView;
+        }
+
     }
     //����������
     public void add_co_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.add_co_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.company_i);
-        old_layout.setVisibility(view.GONE);
-        new_layout.setVisibility(view.VISIBLE);
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     public void add_co_page_save_and_new(View view){
         EditText company_name = (EditText) findViewById(R.id.xjgs_gsm_input);
@@ -234,12 +309,6 @@ public class main extends Activity {
         EditText addr = (EditText) findViewById(R.id.xjgs_dz_input);
         EditText web = (EditText) findViewById(R.id.xjgs_wz_input);
         EditText field = (EditText) findViewById(R.id.xjgs_hy_input);
-
-        company_name.setHint("请输入公司名称");
-        tel.setHint("请输入联系电话");
-        addr.setHint("请输入地址");
-        web.setHint("请输入网站地址");
-        field.setHint("请输入产业类型");
 
 
         ArrayList<CompanyInfo> currentCompanyList = new ArrayList<CompanyInfo>();
@@ -253,27 +322,47 @@ public class main extends Activity {
         currentCompanyList.add(currentCompany);
 
         ContactDBManager.add_company(currentCompanyList);
-        LinearLayout old_layout = (LinearLayout) findViewById(R.id.add_co_page);
-        LinearLayout new_layout = (LinearLayout) findViewById(R.id.company_i);
-        old_layout.setVisibility(view.GONE);
-        new_layout.setVisibility(view.VISIBLE);
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
         refreshCompanyList();
 
     }
 
     //�����༭��˾ҳ
     public void Turn_to_edit_co_page(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.company_i);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.edit_co_page);
-        old_layout.setVisibility(view.GONE);
-        new_layout.setVisibility(view.VISIBLE);
+        if (currentCompanyDBiD > 0) {
+            TextView CompanyName = (TextView) findViewById(R.id.edit_co_page_companyName);
+            TextView WebAddr = (TextView) findViewById(R.id.edit_co_page_webSite);
+            TextView Tel = (TextView) findViewById(R.id.phone_number_content);
+            TextView Addr = (TextView) findViewById(R.id.eddasd);
+            TextView Field = (TextView) findViewById(R.id.education_type_content);
+
+            CompanyInfo currentCompany = ContactDBManager.company_queryByID(currentCompanyDBiD);
+            CompanyName.setText(currentCompany.getName());
+            WebAddr.setText(currentCompany.getWebsite());
+            Tel.setText(currentCompany.getPhone());
+            Addr.setText(currentCompany.getAddress());
+            Field.setText(currentCompany.getField());
+        }
+        View newView = findViewById(R.id.edit_co_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     //����������
     public void edit_co_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.edit_co_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.company_i);
-        old_layout.setVisibility(view.GONE);
-        new_layout.setVisibility(view.VISIBLE);
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
 
@@ -289,117 +378,228 @@ public class main extends Activity {
     }
 
     public void Turn_to_kddz_page(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.company_i);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.kddz_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.kddz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     //·µ»ØÖ÷½çÃæ
     public void Kddz_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.kddz_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.company_i);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     //ÌøÖÁ¿ªµ¥µØÖ·±à¼­Ò³
     public void Turn_to_edit_kddz_page(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.kddz_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.edit_kddz_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.edit_kddz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     //·µ»Ø¿ªµ¥µØÖ·²é¿´Ò³
     public void edit_kddz_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.edit_kddz_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.kddz_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.kddz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     //±£´æ±à¼­¿ªµ¥µØÖ·
     public void edit_kddz_page_save(View view) {
+        View newView = findViewById(R.id.kddz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
 
     }
 
     //ÌøÖÁÊÕ»õµØÖ·²é¿´Ò³
     public void Turn_to_shdz_page(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.company_i);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.shdz_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.shdz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     //·µ»ØÖ÷½çÃæ
     public void Shdz_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.shdz_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.company_i);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     //ÌøÖÁÊÕ»õµØÖ·±à¼­Ò³
     public void Turn_to_edit_shdz_page(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.shdz_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.edit_shdz_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.edit_shdz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     //·µ»ØÊÕ»õµØÖ·²é¿´Ò³
     public void edit_shdz_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.edit_shdz_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.shdz_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.shdz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     public void edit_shdz_page_save(View view) {
-
+        View newView = findViewById(R.id.shdz_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
     //µØÖ·ÐÅÏ¢¼°Ïà¹Ø   end------------------------------------------------------------------
-
+    public void Turn_to_add_contact_page(View view) {
+        View newView = findViewById(R.id.add_contact_page_fromCompany);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
+    }
+    public void add_contact_page_back_fromCompany(View view) {
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
+    }
+    public void add_contact_page_save_and_new_fromCompany(View view) {
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
+    }
     //ҵ����
     //�����½�ҵ����ҳ
     public void Turn_to_add_ywjc_page(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.company_i);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.add_ywjc_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.add_ywjc_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     //����������
     public void Ywjc_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.add_ywjc_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.company_i);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     //ҵ���̱���
     public void Ywjc_save(View view) {
-
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     //���ʷ
     //�����½����ʷҳ
     public void Turn_to_add_hdls_page(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.company_i);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.add_hdls_page);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.add_hdls_page);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     //����������
     public void Hdls_page_back(View view) {
-        LinearLayout old_layout = (LinearLayout)findViewById(R.id.add_hdls_page);
-        LinearLayout new_layout = (LinearLayout)findViewById(R.id.company_i);
-        old_layout.setVisibility(View.GONE);
-        new_layout.setVisibility(View.VISIBLE);
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
     //���ʷ����
     public void Hdls_save(View view) {
-
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
     }
 
+    public void to_edit_contact(View view) {
+        View newView = findViewById(R.id.display_contact_edit_page);
+        if (currentViewContact != null) {
+            currentViewContact.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewContact = newView;
+    }
+
+    public void edit_contact_page_back(View view) {
+        View newView = findViewById(R.id.display_contact_info_page);
+        if (currentViewContact != null) {
+            currentViewContact.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewContact = newView;
+    }
+
+    public void edit_contact_page_save(View view) {
+        View newView = findViewById(R.id.display_contact_info_page);
+        if (currentViewContact != null) {
+            currentViewContact.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewContact = newView;
+    }
+
+    public void add_contact_page_back_fromContact(View view) {
+        View newView = findViewById(R.id.display_contact_info_page);
+        if (currentViewContact != null) {
+            currentViewContact.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewContact = newView;
+    }
+    public void add_contact_page_save_and_new_fromContact(View view) {
+        View newView = findViewById(R.id.display_contact_info_page);
+        if (currentViewContact != null) {
+            currentViewContact.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewContact = newView;
+    }
 
     @Override
     protected void onPause() {

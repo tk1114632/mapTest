@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="@color/white"
+                        android:id ="@+id/display_contact_edit_page"
+                        android:visibility="gone" >
+
+    				<LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+                        <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/blue"
+
+                                android:text="返回"
+                                android:background="@color/white"
+                                android:layout_gravity="center"
+                                android:padding="0dip"
+                                android:onClick="edit_contact_page_back"/>
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                                  android:layout_weight="1"/>
+                        <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dip"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="20dip"
+                                android:padding="0dip"
+                                android:background="@color/white"
+                                android:gravity="center"
+                                android:textColor="@color/blue"
+                                android:text="保存"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:onClick="edit_contact_page_save" />
+
+
+		            </LinearLayout>
+		            
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="编辑联系人"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:textColor="@color/black"
+                                android:text="*必填信息"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    姓氏*" />
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_xs" /> 
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    名字" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_mz" /> 
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    职务" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_zw" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电子邮箱（工作）" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_email_gz" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电子邮箱（私人）" />
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_email_sr" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    手机" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_sj" /> 
+                    </LinearLayout>
+					
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电话（工作）" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_phone_gz" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    电话（私人）" />
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_phone_sr" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    备注" />
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    备注" 
+                                android:id="@+id/display_contact_bz" />
+                    </LinearLayout>
+                    
+                    <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                
+                                android:text="即时通信"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    QQ" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_qq" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    WeChat" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_wc" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    Skype" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_sk" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    Weibo" />
+                          <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    暂无"
+                                android:id="@+id/display_contact_wb" />
+                    </LinearLayout>
+                    
+                    <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="50dip"
+                                android:textSize="25dip"
+                                android:gravity="bottom"
+                                android:textColor="@color/black"
+                                
+                                android:text="地址信息"
+                                android:textAppearance="?android:attr/textAppearanceMedium" />
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    国家" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    "
+                                android:id="@+id/display_contact_gj" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    省/市" />
+                         <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="   "
+                                android:id="@+id/display_contact_ss" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    城市" />
+                          <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    "
+                                android:id="@+id/display_contact_cs" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    地址" />
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    "
+                                android:id="@+id/display_contact_dz" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                        <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="    邮政编码" />
+                          <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30dip"
+                                android:textSize="20dip"
+                                android:textColor="@color/black"
+                                android:text="    "
+                                android:id="@+id/display_contact_yzbm" />
+                    </LinearLayout>
+</LinearLayout>

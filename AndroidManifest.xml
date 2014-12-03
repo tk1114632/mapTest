@@ -20,6 +20,7 @@
                 android:name="main"
                 android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
+                android:windowSoftInputMode="adjustNothing"
                 android:label="CRM for Showcase">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
