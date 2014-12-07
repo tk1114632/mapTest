@@ -8,7 +8,7 @@
 
     <application
         android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/launch"
         android:name="com.example.mapTest.DemoApplication">
 
 
@@ -20,7 +20,7 @@
                 android:name="main"
                 android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
-                android:windowSoftInputMode="adjustNothing"
+                android:windowSoftInputMode="adjustPan"
                 android:label="CRM for Showcase">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

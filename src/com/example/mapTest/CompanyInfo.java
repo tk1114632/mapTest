@@ -18,6 +18,23 @@ public class CompanyInfo implements Serializable {
     public int Industry_id;
     public int Sale_id;
     public int Shipping_address_id;
+    private double PositionLat;
+    private double PositionLng;
+    public double getPositionLat() {
+        return PositionLat;
+    }
+
+    public void setPositionLat(double positionLat) {
+        PositionLat = positionLat;
+    }
+
+    public double getPositionLng() {
+        return PositionLng;
+    }
+
+    public void setPositionLng(double positionLng) {
+        PositionLng = positionLng;
+    }
 
     private int db_id = -1;
 

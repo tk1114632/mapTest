@@ -44,14 +44,43 @@ public class DBHelper extends SQLiteOpenHelper {
                 "event_id INTEGER, " +
                 "industry_id INTEGER, " +
                 "sale_id INTEGER, " +
-                "shipping_address_id INTEGER" +
+                "shipping_address_id INTEGER," +
+                "position_lat DOUBLE, " +
+                "position_lng DOUBLE " +
                 ")");
+        db.execSQL("CREATE TABLE IF NOT EXISTS Contact" +
+                "(" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "email_personal VARCHAR(25), " +
+                "email_work VARCHAR(25), " +
+                "firstname VARCHAR(15), " +
+                "lastname VARCHAR(15)," +
+                "phone_home VARCHAR(15)," +
+                "phone_mobile VARCHAR(20)," +
+                "phone_work VARCHAR(15)," +
+                "note VARCHAR(10)," +
+                "qq VARCHAR(13)," +
+                "skype VARCHAR(15)," +
+                "title VARCHAR(10)," +
+                "wechat VARCHAR(15)," +
+                "weibo VARCHAR(30)," +
+                "address VARCHAR(50), " +
+                "duty VARCHAR(10), " +
+                "address_id INT," +
+                "company_id INT,"+
+                "event_id INT,"+
+                "project_id INT," +
+                "sale_id INT,"+
+                "position_lat DOUBLE, " +
+                "position_lng DOUBLE " +
+                ")" );
         Log.e("数据库表建立完毕","DONE!!!!!");
     }
 
     //如果DATABASE_VERSION值被改为2,系统发现现有数据库版本不同,即会调用onUpgrade
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("ALTER TABLE Person ADD COLUMN other STRING");
+        db.execSQL("ALTER TABLE Company ADD COLUMN position_lat DOUBLE");
+        db.execSQL("ALTER TABLE Company ADD COLUMN position_lng DOUBLE");
     }
 }

@@ -53,7 +53,6 @@ public class mapView extends Activity {
     private ArrayList<Marker> markerList;
 
     //数据库
-    SQLiteDatabase db = null;
     DBManager ContactDBManager = null;
 
 
@@ -61,18 +60,12 @@ public class mapView extends Activity {
     //RadioGroup.OnCheckedChangeListener radioButtonListener;
     Button requestLocButton;
     Button displayNearContactButton;
-    boolean isFirstLoc = true;// 是否首次定位
+    boolean isFirstLoc = false;// 是否首次定位
     boolean isDisplayed = false; //是否已经显示附近联系人
-
-    private Marker marker1;
-    private Marker marker2;
 
     private InfoWindow mInfoWindow;
     private RelativeLayout ContactDetailInfo;
 
-
-    LatLng testPoint = new LatLng(31.239788,121.581575);
-    LatLng testPoint2 = new LatLng(31.239381,121.48575);
     BitmapDescriptor positionIcon = BitmapDescriptorFactory.fromResource(R.drawable.maker);
 
     @Override
@@ -83,12 +76,26 @@ public class mapView extends Activity {
 
         //填充ArrayList<ContactInfo>
         ContactList = new ArrayList<ContactInfo>();
-
         ContactDBManager = new DBManager(this);
-
         ContactList = ContactDBManager.queryAll();
-        distanceManager = new DistanceUtil();
 
+        ArrayList<CompanyInfo> companyInDB = ContactDBManager.company_queryAll();
+        ArrayList<ContactInfo_new> contactInDB = ContactDBManager.contact_queryAll();
+        for (CompanyInfo thisInfo : companyInDB) {
+            ContactInfo x = new ContactInfo();
+            x.setName(thisInfo.getName());
+            x.setCompany(thisInfo.getName());
+            x.setAddress(thisInfo.getAddress());
+            x.setTel(thisInfo.getPhone());
+            x.setPositionLat(thisInfo.getPositionLat());
+            x.setPositionLng(thisInfo.getPositionLng());
+            x.setDb_id(thisInfo.getDb_id());
+            Log.e("Address of"+x.getAddress()+ "========",""+ x.getPositionLat());
+            ContactList.add(x);
+        }
+
+
+        distanceManager = new DistanceUtil();
 
         ContactDetailInfo = (RelativeLayout) this.findViewById(R.id.info_detail);
 
@@ -129,24 +136,33 @@ public class mapView extends Activity {
         mLocClient.start();
 
         Intent intent = getIntent();
-        if (intent.hasExtra("x") && intent.hasExtra("y")) {
+        if (intent != null && intent.getExtras() != null) {
             // 当用intent参数时，设置中心点为指定点
-            Bundle b = intent.getExtras();
-            LatLng p = new LatLng(b.getDouble("y"), b.getDouble("x"));
+            ContactInfo comeInInfo = (ContactInfo) intent.getExtras().getSerializable("selectedInfo");
+
+            LatLng p = new LatLng(comeInInfo.getPositionLat(), comeInInfo.getPositionLng());
             MapStatus mMapStatus = new MapStatus.Builder()
                     .target(p)
                     .zoom(13)
                     .build();
             MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
             mBaiduMap.setMapStatus(mMapStatusUpdate);
-            /*mMapView = new MapView(this,
-                    new BaiduMapOptions().mapStatus(new MapStatus.Builder()
-                            .target(p).build()));*/
+            popupInfo(ContactDetailInfo, comeInInfo);
+            LatLng currentPosition = new LatLng(comeInInfo.getPositionLat(),comeInInfo.getPositionLng());
+            OverlayOptions currentOption = new MarkerOptions()
+                    .position(currentPosition)
+                    .icon(positionIcon)
+                    .zIndex(5);
+            Marker marker = (Marker) mBaiduMap.addOverlay(currentOption);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("ContactInformation",comeInInfo);
+            marker.setExtraInfo(bundle);
         } else {
+            isFirstLoc = true;
             LatLng m = new LatLng(31.238788,121.481575);//上海中心坐标
             MapStatus mMapStatus = new MapStatus.Builder()
                     .target(m)
-                    .zoom(13)
+                    .zoom(11)
                     .build();
             MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
             mBaiduMap.setMapStatus(mMapStatusUpdate);
@@ -188,7 +204,7 @@ public class mapView extends Activity {
             public boolean onMarkerClick(final Marker marker) {
                 Button button = new Button(getApplicationContext());
                 button.setBackgroundResource(R.drawable.location_tips);
-                button.setWidth(250);
+                button.setWidth(200);
                 InfoWindow.OnInfoWindowClickListener listener = null;
                 //if (marker == marker1) {
                 Bundle bundle = marker.getExtraInfo();
@@ -208,8 +224,6 @@ public class mapView extends Activity {
                 mBaiduMap.showInfoWindow(mInfoWindow);
 
                 //显示详细信息
-                ContactDetailInfo.setVisibility(View.VISIBLE);
-                requestLocButton.setVisibility(View.GONE);
                 popupInfo(ContactDetailInfo, currentContact);
 
                 //}
@@ -221,6 +235,8 @@ public class mapView extends Activity {
 
     protected void popupInfo(final RelativeLayout mMarkerDetail, final ContactInfo info)
     {
+
+        ContactDetailInfo.setVisibility(View.VISIBLE);
         ViewHolder CurrentDetail = null;
         if (mMarkerDetail.getTag() == null)
         {
@@ -243,7 +259,6 @@ public class mapView extends Activity {
                 startNavi(mMapView, info);
                 mBaiduMap.hideInfoWindow();
                 mMarkerDetail.setVisibility(View.GONE);
-                requestLocButton.setVisibility(View.VISIBLE);
             }
         };
         CurrentDetail.naviButton.setOnClickListener(NaviButtonListener);
@@ -330,9 +345,9 @@ public class mapView extends Activity {
                 LatLng myLatlng = new LatLng(locData.latitude,locData.longitude);
                 int distance = (int) distanceManager.getDistance(currentLatlng,myLatlng);
                 currentPerson.setDistance(distance);
-                Log.e("Distance of " + currentPerson.getName()+" :", currentPerson.getDistance()+" id: " + currentPerson.getDb_id()+" ================");
+                //Log.e("Distance of " + currentPerson.getName()+" :", currentPerson.getDistance()+" id: " + currentPerson.getDb_id()+" ================");
             }
-            rankList(ContactList);
+
         }
 
         public void onReceivePoi(BDLocation poiLocation) {
@@ -360,7 +375,7 @@ public class mapView extends Activity {
     }
 
     public void contactListButtonOnClick(View view){
-
+        rankList(ContactList);
         Context context = getApplicationContext();
         final ListView myListView = (ListView) findViewById(R.id.poplistView);
 
@@ -393,6 +408,9 @@ public class mapView extends Activity {
         });
     }
 
+    public void back_to_contact(View view) {
+        this.finish();
+    }
     @Override
     protected void onPause() {
         mMapView.onPause();

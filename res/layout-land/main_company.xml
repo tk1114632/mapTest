@@ -21,8 +21,8 @@
                 android:layout_weight="2"
                 android:background="@color/blue_1">
             <LinearLayout
-                    android:layout_width="30dip"
-                    android:layout_height="30dip"
+                    android:layout_width="50dp"
+                    android:layout_height="fill_parent"
                     android:orientation="horizontal" >
 
                 <TextView
@@ -60,14 +60,17 @@
 
 
             <LinearLayout
-                    android:layout_width="30dip"
-                    android:layout_height="30dip"
+                    android:layout_width="50dp"
+                    android:layout_height="fill_parent"
                     android:layout_gravity="center"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:onClick="add_new_companyorContact">
                 <ImageView
                         android:layout_width="20dip"
                         android:layout_height="20dip"
                         android:background="@drawable/icon_adder"
+                        android:clickable="true"
                         android:onClick="add_new_companyorContact" />
 
             </LinearLayout>
@@ -118,6 +121,17 @@
                     android:cacheColorHint="@color/white"
                     android:divider="@color/grey"
                     android:listSelector="@color/grey"
+                    android:visibility="visible"
+                    />
+            <ListView
+                    android:id="@+id/contact_List"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:clickable="true"
+                    android:cacheColorHint="@color/white"
+                    android:divider="@color/grey"
+                    android:listSelector="@color/grey"
+                    android:visibility="gone"
                     />
 
         </LinearLayout>
@@ -178,8 +192,9 @@
 
                         <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal" >
+                                android:layout_height="30dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
 
                             <TextView
                                     android:id="@+id/web_address"
@@ -202,16 +217,17 @@
 
                         <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal" >
+                                android:layout_height="30dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
 
                             <TextView
                                     android:id="@+id/phone_number"
                                     android:layout_width="100dp"
                                     android:layout_height="wrap_content"
                                     android:textSize="20dip"
+                                    android:text="  联系电话:"
                                     android:textColor="@color/black"
-                                    android:text="  联系电话 :"
                                     android:textAppearance="?android:attr/textAppearanceMedium" />
                             <TextView
                                     android:id="@+id/phone_number_content"
@@ -225,8 +241,9 @@
 
                         <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal" >
+                                android:layout_height="30dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
                             <TextView
                                     android:id="@+id/education_type"
                                     android:layout_width="100dp"
@@ -247,8 +264,9 @@
 
                         <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal" >
+                                android:layout_height="30dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
                             <TextView
 
                                     android:layout_width="100dp"
@@ -261,10 +279,39 @@
                                     android:id="@+id/eddasd"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:textSize="20dip"
                                     android:textColor="@color/black"
                                     android:singleLine="true"
                                     android:text="东川路800号" />
+                            <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:layout_weight="2"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:clickable="true"
+                                    android:onClick="address_OnClick">
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="fill_parent"
+                                        android:gravity="center"
+                                        android:text="地图上显示"
+                                        android:textColor="@color/gray"
+                                        android:id="@+id/buttonOfAddr"
+                                        android:textSize="12sp"
+                                        android:clickable="true"
+                                        android:onClick="address_OnClick"/>
+                                <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="fill_parent"
+                                        android:background="@drawable/maker"
+                                        android:clickable="true"
+                                        android:onClick="address_OnClick"
+                                        />
+
+                            </LinearLayout>
+
                         </LinearLayout>
 
                         <Button
@@ -1468,7 +1515,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_xs_input" /> <!-- 新建联系人_姓氏 -->
+                                    android:id="@+id/xjlxr_xs_input_fromCompany" /> <!-- 新建联系人_姓氏 -->
 
                         </LinearLayout>
 
@@ -1491,7 +1538,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_mz_input" />
+                                    android:id="@+id/xjlxr_mz_input_fromCompany" />
                             <!-- 新建联系人_名字 -->
 
                         </LinearLayout>
@@ -1516,7 +1563,7 @@
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
 
-                                    android:id="@+id/xjlxr_zw_input" /> <!-- 新建联系人_职务 -->
+                                    android:id="@+id/xjlxr_zw_input_fromCompany" /> <!-- 新建联系人_职务 -->
 
                         </LinearLayout>
                         <LinearLayout
@@ -1538,7 +1585,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_dzyj_gz_input" /> <!-- 新建联系人_电子邮件_工作 -->
+                                    android:id="@+id/xjlxr_dzyj_gz_input_fromCompany" /> <!-- 新建联系人_电子邮件_工作 -->
 
                         </LinearLayout>
 
@@ -1561,7 +1608,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_dzyj_sr_input" /> <!-- 新建联系人_电子邮件_私人 -->
+                                    android:id="@+id/xjlxr_dzyj_sr_input_fromCompany" /> <!-- 新建联系人_电子邮件_私人 -->
 
                         </LinearLayout>
 
@@ -1584,7 +1631,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_sj_input" /> <!-- 新建联系人_手机 -->
+                                    android:id="@+id/xjlxr_sj_input_fromCompany" /> <!-- 新建联系人_手机 -->
 
                         </LinearLayout>
 
@@ -1607,7 +1654,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_dh_gz_input" /> <!-- 新建联系人_电话（工作） -->
+                                    android:id="@+id/xjlxr_dh_gz_input_fromCompany" /> <!-- 新建联系人_电话（工作） -->
 
                         </LinearLayout>
 
@@ -1630,7 +1677,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_dh_sr_input" /> <!-- 新建联系人_电话（私人） -->
+                                    android:id="@+id/xjlxr_dh_sr_input_fromCompany" /> <!-- 新建联系人_电话（私人） -->
 
                         </LinearLayout>
 
@@ -1653,7 +1700,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/xjlxr_bz_input" /> <!-- 新建联系人_备注 -->
+                                    android:id="@+id/xjlxr_bz_input_fromCompany" /> <!-- 新建联系人_备注 -->
                         </LinearLayout>
 
                         <TextView
@@ -1685,7 +1732,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/jstx_qq_input" /> <!-- 即时通信_QQ -->
+                                    android:id="@+id/jstx_qq_input_fromCompany" /> <!-- 即时通信_QQ -->
                         </LinearLayout>
 
                         <LinearLayout
@@ -1707,7 +1754,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/jstx_wc_input" /> <!-- 即时通信_WeChat -->
+                                    android:id="@+id/jstx_wc_input_fromCompany" /> <!-- 即时通信_WeChat -->
                         </LinearLayout>
 
                         <LinearLayout
@@ -1729,7 +1776,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/jstx_sk_input" /> <!-- 即时通信_Skype -->
+                                    android:id="@+id/jstx_sk_input_fromCompany" /> <!-- 即时通信_Skype -->
                         </LinearLayout>
 
                         <LinearLayout
@@ -1751,7 +1798,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/jstx_wb_input" /> <!-- 即时通信_Weibo -->
+                                    android:id="@+id/jstx_wb_input_fromCompany" /> <!-- 即时通信_Weibo -->
                         </LinearLayout>
 
                         <TextView
@@ -1783,7 +1830,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/dzxx_gj_input" /> <!-- 地址信息_国家 -->
+                                    android:id="@+id/dzxx_gj_input_fromCompany" /> <!-- 地址信息_国家 -->
                         </LinearLayout>
 
                         <LinearLayout
@@ -1805,7 +1852,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/dzxx_ss_input" /> <!-- 地址信息_省/市-->
+                                    android:id="@+id/dzxx_ss_input_fromCompany" /> <!-- 地址信息_省/市-->
                         </LinearLayout>
 
                         <LinearLayout
@@ -1827,7 +1874,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/dzxx_cs_input" /> <!-- 地址信息_城市 -->
+                                    android:id="@+id/dzxx_cs_input_fromCompany" /> <!-- 地址信息_城市 -->
                         </LinearLayout>
 
                         <LinearLayout
@@ -1849,7 +1896,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/dzxx_dz_input" /> <!-- 地址信息_地址 -->
+                                    android:id="@+id/dzxx_dz_input_fromCompany" /> <!-- 地址信息_地址 -->
                         </LinearLayout>
 
                         <LinearLayout
@@ -1871,7 +1918,7 @@
                                     android:paddingTop="0dip"
                                     android:paddingLeft="10dip"
                                     android:singleLine="true"
-                                    android:id="@+id/dzxx_yzbm_input" /> <!-- 地址信息_邮政编码 -->
+                                    android:id="@+id/dzxx_yzbm_input_fromCompany" /> <!-- 地址信息_邮政编码 -->
                         </LinearLayout>
 
 
@@ -2330,29 +2377,95 @@
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:background="@color/grey_3">
 
-        <Button
-                android:id="@+id/link_to_yxt"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:text="云销通" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:clickable="false"
+                >
 
-        <Button
-                android:id="@+id/link_to_GPS"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:onClick="toMapViewButton"
-                android:text="GPS" />
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_02"
+                    android:clickable="true"
+                    />
+            <Button
+                    android:id="@+id/link_to_yxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/grey_3"
+                    android:text="云销通" />
 
-        <Button
-                android:id="@+id/link_to_CRM"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+        </LinearLayout>
+
+
+        <TextView
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@color/grey_4"/>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:text="CRM" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:clickable="false"
+                >
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_gps_clicked"
+                    android:clickable="true"
+                    android:onClick="toMapViewButton"
+                    />
+            <Button
+                    android:id="@+id/link_to_GPS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:onClick="toMapViewButton"
+                    android:background="@color/grey_3"
+                    android:text="地图" />
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@color/grey_4"/>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:clickable="false"
+                >
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/icon_06"
+                    android:clickable="true"
+                    android:onClick="address_OnClick"
+                    />
+            <Button
+                    android:id="@+id/link_to_CRM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/grey_3"
+                    android:text="CRM" />
+        </LinearLayout>
+
 
     </LinearLayout>
 

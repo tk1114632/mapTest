@@ -77,13 +77,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    姓氏*" />
-                        <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_xs" /> 
+                                android:id="@+id/edit_contact_xs" /> 
                     </LinearLayout>
                     
                     <LinearLayout
@@ -98,13 +98,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    名字" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_mz" /> 
+                                android:id="@+id/edit_contact_mz" /> 
                     </LinearLayout>
                     
                     <LinearLayout
@@ -119,13 +119,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    职务" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_zw" />
+                                android:id="@+id/edit_contact_zw" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -140,13 +140,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电子邮箱（工作）" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_email_gz" />
+                                android:id="@+id/edit_contact_email_gz" />
 
                     </LinearLayout>
 
@@ -162,13 +162,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电子邮箱（私人）" />
-                        <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_email_sr" />
+                                android:id="@+id/edit_contact_email_sr" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -183,13 +183,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    手机" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_sj" /> 
+                                android:id="@+id/edit_contact_sj" /> 
                     </LinearLayout>
 					
                     <LinearLayout
@@ -204,13 +204,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电话（工作）" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_phone_gz" />
+                                android:id="@+id/edit_contact_phone_gz" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -225,13 +225,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电话（私人）" />
-                        <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_phone_sr" />
+                                android:id="@+id/edit_contact_phone_sr" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -246,13 +246,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    备注" />
-                        <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    备注" 
-                                android:id="@+id/display_contact_bz" />
+                                android:id="@+id/edit_contact_bz" />
                     </LinearLayout>
                     
                     <TextView
@@ -277,13 +277,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    QQ" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_qq" />
+                                android:id="@+id/edit_contact_qq" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -298,13 +298,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    WeChat" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_wc" />
+                                android:id="@+id/edit_contact_wc" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -319,13 +319,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    Skype" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_sk" />
+                                android:id="@+id/edit_contact_sk" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -340,13 +340,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    Weibo" />
-                          <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
-                                android:id="@+id/display_contact_wb" />
+                                android:id="@+id/edit_contact_wb" />
                     </LinearLayout>
                     
                     <TextView
@@ -354,8 +354,7 @@
                                 android:layout_height="50dip"
                                 android:textSize="25dip"
                                 android:gravity="bottom"
-                                android:textColor="@color/black"
-                                
+                                android:textColor="@color/black"                                
                                 android:text="地址信息"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                     
@@ -371,13 +370,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    国家" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    "
-                                android:id="@+id/display_contact_gj" />
+                                android:id="@+id/edit_contact_gj" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -392,13 +391,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    省/市" />
-                         <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="   "
-                                android:id="@+id/display_contact_ss" />
+                                android:id="@+id/edit_contact_ss" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -413,13 +412,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    城市" />
-                          <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    "
-                                android:id="@+id/display_contact_cs" />
+                                android:id="@+id/edit_contact_cs" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -434,13 +433,13 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    地址" />
-                        <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    "
-                                android:id="@+id/display_contact_dz" />
+                                android:id="@+id/edit_contact_dz" />
                     </LinearLayout>
                     
                     <LinearLayout
@@ -455,12 +454,12 @@
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    邮政编码" />
-                          <TextView
+                        <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="30dip"
                                 android:textSize="20dip"
                                 android:textColor="@color/black"
                                 android:text="    "
-                                android:id="@+id/display_contact_yzbm" />
+                                android:id="@+id/edit_contact_yzbm" />
                     </LinearLayout>
 </LinearLayout>
