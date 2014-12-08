@@ -21,12 +21,14 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="50dip"
-                                android:gravity="center_vertical"
-                                android:textSize="25dip"
-                                android:textColor="@color/black"
+                               
+                                
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:layout_margin="10dip"
+                                android:textColor="@color/black"
+                                android:textSize="25sp"
                                 android:text="联系人信息"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -38,14 +40,12 @@
                                 android:text=""
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         <Button
-                                android:layout_width="wrap_content"
-                                android:layout_height="30dip"
-                                android:textSize="15dp"
+                                android:layout_width="60dip"
+                                android:layout_height="35dip"
+                                android:textSize="20dp"
                                 android:textColor="@color/blue"
                                 android:text="编辑"
                                 android:background="@color/white"
-                                android:layout_gravity="center_vertical"
-                                android:padding="0dip"
                                 android:onClick="to_edit_contact"/>
                     </LinearLayout>
                     
@@ -240,12 +240,13 @@
                     </LinearLayout>
                     
                     <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="50dip"
-                                android:textSize="25dip"
-                                android:gravity="bottom"
-                                android:textColor="@color/black"
-                                
+                             	android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_margin="10dip"
+                               
+                                android:textSize="25sp"
+                                android:textColor="@color/black"                                
                                 android:text="即时通信"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                     
@@ -334,12 +335,12 @@
                     </LinearLayout>
                     
                     <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="50dip"
-                                android:textSize="25dip"
-                                android:gravity="bottom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_margin="10dip"
                                 android:textColor="@color/black"
-                                
+                                android:textSize="25sp"                                
                                 android:text="地址信息"
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                     

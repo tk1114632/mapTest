@@ -47,7 +47,6 @@ public class contactListAdapter extends BaseAdapter {
         if (position%2 == 1) {
             convertView.setBackgroundColor(Color.WHITE);
         }
-
         convertView.setMinimumHeight(20);
         return convertView;
     }

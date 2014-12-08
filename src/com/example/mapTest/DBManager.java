@@ -148,21 +148,22 @@ public class DBManager {
             db.endTransaction();
         }
     }
-    public void company_updateName (CompanyInfo company){
-        ContentValues cv = new ContentValues();
-        cv.put("name", company.getName());
-        db.update("Company", cv, "name = ?", new String[]{company.getName()});
+    public void company_updateName (int key, String text) {
+        db.execSQL("UPDATE Company SET name = '"+text+ "' WHERE _id ="+key);
     }
 
-    public void company_updatePhone (CompanyInfo company){
-        ContentValues cv = new ContentValues();
-        cv.put("phone", company.getPhone());
-        db.update("Company", cv, "phone = ?", new String[]{company.getPhone()});
+    public void company_updatePhone (int key, String text) {
+        db.execSQL("UPDATE Company SET phone = '" + text + "' WHERE _id =" + key);
     }
-    public void company_updateWebsite (CompanyInfo company){
-        ContentValues cv = new ContentValues();
-        cv.put("website", company.getWebsite());
-        db.update("Company", cv, "website = ?", new String[]{company.getWebsite()});
+    public void company_updateWebsite (int key, String text) {
+        db.execSQL("UPDATE Company SET website = '" + text + "' WHERE _id =" + key);
+    }
+
+    public void company_updateAddress (int key, String text) {
+        db.execSQL("UPDATE Company SET address = '" + text + "' WHERE _id =" + key);
+    }
+    public void company_updateField (int key, String text) {
+        db.execSQL("UPDATE Company SET field = '" + text + "' WHERE _id =" + key);
     }
     public void company_updateCoordinate(int DbId, double lat, double lng) {
         db.execSQL("UPDATE Company set position_lat = " + lat + " where _id = "+DbId);
@@ -278,82 +279,60 @@ public class DBManager {
             db.endTransaction();
         }
     }
-    public void contact_updateEmail_personal (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("email_personal", contact.getEmail_personal());
-        db.update("Contact", cv, "email_personal = ?", new String[]{contact.getEmail_personal()});
+    public void contact_updateEmail_personal (int keyID, String text){
+        db.execSQL("UPDATE Contact set email_personal = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateEmail_work (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("email_work", contact.getEmail_work());
-        db.update("Contact", cv, "email_work = ?", new String[]{contact.getEmail_work()});
+    public void contact_updateEmail_work (int keyID, String text){
+        db.execSQL("UPDATE Contact set email_work = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateFirstname (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("firstname", contact.getFirstname());
-        db.update("Contact", cv, "firstname = ?", new String[]{contact.getFirstname()});
+    public void contact_updateFirstname (int keyID, String text){
+        db.execSQL("UPDATE Contact set firstname = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateLastname (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("lastname", contact.getLastname());
-        db.update("Contact", cv, "lastname = ?", new String[]{contact.getLastname()});
+    public void contact_updateLastname (int keyID, String text){
+        db.execSQL("UPDATE Contact set lastname = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateNote (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("note", contact.getNote());
-        db.update("Contact", cv, "note = ?", new String[]{contact.getNote()});
+    public void contact_updateNote (int keyID, String text){
+        db.execSQL("UPDATE Contact set note = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updatePhone_home (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("phone_home", contact.getPhone_home());
-        db.update("Contact", cv, "phone_home = ?", new String[]{contact.getPhone_home()});
+    public void contact_updatePhone_home (int keyID, String text){
+        db.execSQL("UPDATE Contact set phone_home = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updatePhone_mobile (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("phone_mobile", contact.getPhone_mobile());
-        db.update("Contact", cv, "phone_mobile = ?", new String[]{contact.getPhone_mobile()});
+    public void contact_updatePhone_mobile (int keyID, String text){
+        db.execSQL("UPDATE Contact set phone_mobile = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updatePhone_work (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("phone_work", contact.getPhone_work());
-        db.update("Contact", cv, "phone_work = ?", new String[]{contact.getPhone_work()});
+    public void contact_updatePhone_work (int keyID, String text){
+        db.execSQL("UPDATE Contact set phone_work = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateQq (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("qq", contact.getQq());
-        db.update("Contact", cv, "qq = ?", new String[]{contact.getQq()});
+    public void contact_updateQq (int keyID, String text){
+        db.execSQL("UPDATE Contact set qq = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateSkype (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("skype", contact.getSkype());
-        db.update("Contact", cv, "skype = ?", new String[]{contact.getSkype()});
+    public void contact_updateSkype (int keyID, String text){
+        db.execSQL("UPDATE Contact set skype = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateTitle (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("title", contact.getTitle());
-        db.update("Contact", cv, "title = ?", new String[]{contact.getTitle()});
+    public void contact_updateTitle (int keyID, String text){
+        db.execSQL("UPDATE Contact set title = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateWechat (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("wechat", contact.getWechat());
-        db.update("Contact", cv, "wechat = ?", new String[]{contact.getWechat()});
+    public void contact_updateWechat (int keyID, String text){
+        db.execSQL("UPDATE Contact set wechat = '" + text + "' where _id = " + keyID);
     }
 
-    public void contact_updateWeibo (ContactInfo_new contact){
-        ContentValues cv = new ContentValues();
-        cv.put("weibo", contact.getWeibo());
-        db.update("Contact", cv, "weibo = ?", new String[]{contact.getWeibo()});
+    public void contact_updateWeibo (int keyID, String text){
+        db.execSQL("UPDATE Contact set weibo = '" + text + "' where _id = " + keyID);
+    }
+
+    public void contact_updateAddress (int keyID, String text){
+        db.execSQL("UPDATE Contact set address = '" + text + "' where _id = " + keyID);
     }
 
 
@@ -435,10 +414,42 @@ public class DBManager {
                 newContact.setAddress(c.getString(c.getColumnIndex("address")));
             }
         }
-
-
         c.close();
         return newContact;
+    }
+    public ArrayList<ContactInfo_new> contact_queryByCompanyID(int keyID) {
+        ArrayList<ContactInfo_new> returnList = new ArrayList<ContactInfo_new>();
+        Cursor c = db.rawQuery("SELECT * FROM Contact WHERE company_id =?", new String[]{keyID+""});
+        if (c != null) {
+            while (c.moveToNext()) {
+                ContactInfo_new newContact =  new ContactInfo_new();
+                newContact.setEmail_personal(c.getString((c.getColumnIndex("email_personal"))));
+                newContact.setEmail_work(c.getString((c.getColumnIndex("email_work"))));
+                newContact.setFirstname(c.getString((c.getColumnIndex("firstname"))));
+                newContact.setLastname(c.getString((c.getColumnIndex("lastname"))));
+                newContact.setNote(c.getString((c.getColumnIndex("note"))));
+                newContact.setPhone_home(c.getString((c.getColumnIndex("phone_home"))));
+                newContact.setPhone_mobile(c.getString((c.getColumnIndex("phone_mobile"))));
+                newContact.setPhone_work(c.getString((c.getColumnIndex("phone_work"))));
+                newContact.setQq(c.getString((c.getColumnIndex("qq"))));
+                newContact.setSkype(c.getString((c.getColumnIndex("skype"))));
+                newContact.setTitle(c.getString((c.getColumnIndex("title"))));
+                newContact.setWechat(c.getString((c.getColumnIndex("wechat"))));
+                newContact.setWeibo(c.getString(c.getColumnIndex("weibo")));
+                newContact.setAddress_id(c.getInt((c.getColumnIndex("address_id"))));
+                newContact.setCompany_id(c.getInt((c.getColumnIndex("company_id"))));
+                newContact.setEvent_id(c.getInt((c.getColumnIndex("event_id"))));
+                newContact.setProject_id(c.getInt(c.getColumnIndex("project_id")));
+                newContact.setSale_id(c.getInt(c.getColumnIndex("sale_id")));
+
+                newContact.setDuty(c.getString(c.getColumnIndex("duty")));
+                newContact.setDb_id(c.getInt(c.getColumnIndex("_id")));
+                newContact.setAddress(c.getString(c.getColumnIndex("address")));
+                returnList.add(newContact);
+            }
+        }
+        c.close();
+        return returnList;
     }
 
     //close database

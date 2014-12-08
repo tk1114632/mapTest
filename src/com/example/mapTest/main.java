@@ -24,6 +24,8 @@ import org.w3c.dom.Text;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class main extends Activity {
     //鏁版嵁搴揅ontactDB
@@ -147,6 +149,7 @@ public class main extends Activity {
                                 refreshContactList();
                                 currentContactDBiD = 0;
                                 refreshContactDetailDisplay();
+                                refreshCompanyDetailDisplay();
                             }
                         })
                         .setIcon(R.drawable.ic_launcher)
@@ -222,12 +225,14 @@ public class main extends Activity {
     public void refreshCompanyList(){
         contentInDB = ContactDBManager.company_queryAll();
         Context context = getApplicationContext();
+        RankCompany(contentInDB);
         companyListAdapter arrayAdapter = new companyListAdapter(context, contentInDB);
         list1.setAdapter(arrayAdapter);
     }
     public void refreshContactList() {
         contactInDB = ContactDBManager.contact_queryAll();
         Context context = getApplicationContext();
+        RankContact(contactInDB);
         contactListAdapter arrayAdapter_contact = new contactListAdapter(context, contactInDB);
         list2.setAdapter(arrayAdapter_contact);
     }
@@ -255,7 +260,7 @@ public class main extends Activity {
             Addr.setText(currentCompany.getAddress());
             Field.setText(currentCompany.getField());
 
-
+            //地址栏旁边的按钮
             if (Addr.getText().toString().equals("")) {
                 button.setTextColor(getResources().getColor(R.color.grey_3));
                 button.setClickable(false);
@@ -265,6 +270,12 @@ public class main extends Activity {
                 button.setTextColor(getResources().getColor(R.color.grey));
                 button.setClickable(true);
             }
+            //与该公司相关的联系人
+            Context context = getApplicationContext();
+            ListView listForContactInCompany = (ListView) findViewById(R.id.contactInCompany);
+            ArrayList<ContactInfo_new> contactOfThisCompany = ContactDBManager.contact_queryByCompanyID(currentCompanyDBiD);
+            contactInCompalyListAdapter arrayAdapter = new contactInCompalyListAdapter(context, contactOfThisCompany);
+            listForContactInCompany.setAdapter(arrayAdapter);
         }
         else {
             TextView CompanyName = (TextView) findViewById(R.id.company_name);
@@ -273,7 +284,7 @@ public class main extends Activity {
             TextView Addr = (TextView) findViewById(R.id.eddasd);
             TextView Field = (TextView) findViewById(R.id.education_type_content);
 
-            CompanyName.setText("公司名称");
+            CompanyName.setText("公司名称(未选定)");
             WebAddr.setText("");
             Tel.setText("");
             Addr.setText("");
@@ -327,6 +338,10 @@ public class main extends Activity {
             skype.setText(currentPerson.getSkype());
             address.setText(currentPerson.getAddress());
 
+            country.setText("中国");
+            province.setText("上海");
+            city.setText("上海");
+
         }
         else {
             last_name.setText("");
@@ -346,11 +361,7 @@ public class main extends Activity {
         }
     	
     }
-    
-    
-    public void refreshCompanyButton(View view) {
-        refreshCompanyList();
-    }
+
 
     public void companyOnclick(View view) {
         TextView companyText = (TextView) findViewById(R.id.link_to_companies);
@@ -506,9 +517,9 @@ public class main extends Activity {
         if (currentCompanyDBiD > 0) {
             TextView CompanyName = (TextView) findViewById(R.id.edit_co_page_companyName);
             TextView WebAddr = (TextView) findViewById(R.id.edit_co_page_webSite);
-            TextView Tel = (TextView) findViewById(R.id.phone_number_content);
-            TextView Addr = (TextView) findViewById(R.id.eddasd);
-            TextView Field = (TextView) findViewById(R.id.education_type_content);
+            TextView Tel = (TextView) findViewById(R.id.edit_co_page_tel);
+            TextView Addr = (TextView) findViewById(R.id.edit_co_page_address);
+            TextView Field = (TextView) findViewById(R.id.edit_co_page_field);
 
             CompanyInfo currentCompany = ContactDBManager.company_queryByID(currentCompanyDBiD);
             CompanyName.setText(currentCompany.getName());
@@ -534,6 +545,26 @@ public class main extends Activity {
         currentViewCompany = newView;
     }
 
+    public void co_edit_page_save(View view) {
+        View newView = findViewById(R.id.company_i);
+        if (currentViewCompany != null) {
+            currentViewCompany.setVisibility(View.GONE);
+        }
+        newView.setVisibility(view.VISIBLE);
+        currentViewCompany = newView;
+        TextView CompanyName = (TextView) findViewById(R.id.edit_co_page_companyName);
+        TextView WebAddr = (TextView) findViewById(R.id.edit_co_page_webSite);
+        TextView Tel = (TextView) findViewById(R.id.edit_co_page_tel);
+        TextView Addr = (TextView) findViewById(R.id.edit_co_page_address);
+        TextView Field = (TextView) findViewById(R.id.edit_co_page_field);
+
+        ContactDBManager.company_updateName(currentCompanyDBiD,CompanyName.getText().toString());
+        ContactDBManager.company_updateWebsite(currentCompanyDBiD,WebAddr.getText().toString());
+        ContactDBManager.company_updatePhone(currentCompanyDBiD,Tel.getText().toString());
+        ContactDBManager.company_updateAddress(currentCompanyDBiD,Addr.getText().toString());
+        ContactDBManager.company_updateField(currentCompanyDBiD,Field.getText().toString());
+        refreshCompanyDetailDisplay();
+    }
 
     //展锟斤拷锟截闭碉拷址锟斤拷息锟斤拷锟斤拷锟斤拷锟斤拷址锟斤拷锟秸伙拷锟斤拷址锟斤拷
     public void address_list_change(View view) {
@@ -658,6 +689,58 @@ public class main extends Activity {
     }
     public void add_contact_page_save_and_new_fromCompany(View view) {
         View newView = findViewById(R.id.company_i);
+
+        EditText lastname = (EditText) findViewById(R.id.xjlxr_xs_input_fromCompany);
+        EditText firstname = (EditText) findViewById(R.id.xjlxr_mz_input_fromCompany);
+        EditText zw = (EditText) findViewById(R.id.xjlxr_zw_input_fromCompany);
+        EditText gzyx= (EditText) findViewById(R.id.xjlxr_dzyj_gz_input_fromCompany);
+        EditText sryx = (EditText) findViewById(R.id.xjlxr_dzyj_sr_input_fromCompany);
+        EditText phone = (EditText) findViewById(R.id.xjlxr_sj_input_fromCompany);
+        EditText tel_gz = (EditText) findViewById(R.id.xjlxr_dh_gz_input_fromCompany);
+        EditText tel_sr = (EditText) findViewById(R.id.xjlxr_dh_sr_input_fromCompany);
+        EditText notes = (EditText) findViewById(R.id.xjlxr_bz_input_fromCompany);
+
+        EditText qq_num = (EditText) findViewById(R.id.jstx_qq_input_fromCompany);
+        EditText wechat = (EditText) findViewById(R.id.jstx_wc_input_fromCompany);
+        EditText skype = (EditText) findViewById(R.id.jstx_sk_input_fromCompany);
+        EditText  weibo = (EditText) findViewById(R.id.jstx_wb_input_fromCompany);
+
+        EditText country = (EditText) findViewById(R.id.dzxx_gj_input_fromCompany);
+        EditText province = (EditText) findViewById(R.id.dzxx_ss_input_fromCompany);
+        EditText city = (EditText) findViewById(R.id.dzxx_cs_input_fromCompany);
+        EditText address = (EditText) findViewById(R.id.dzxx_dz_input_fromCompany);
+        EditText zip = (EditText) findViewById(R.id.dzxx_yzbm_input_fromCompany);
+
+
+        ContactInfo_new newAddContact = new ContactInfo_new();
+        ArrayList<ContactInfo_new> newAddList = new ArrayList<ContactInfo_new>();
+        newAddContact.setFirstname(firstname.getText().toString());
+        newAddContact.setLastname(lastname.getText().toString());
+        newAddContact.setDuty(zw.getText().toString());
+        newAddContact.setEmail_work(gzyx.getText().toString());
+        newAddContact.setEmail_personal(sryx.getText().toString());
+        newAddContact.setPhone_mobile(phone.getText().toString());
+        newAddContact.setPhone_work(tel_gz.getText().toString());
+        newAddContact.setPhone_home(tel_sr.getText().toString());
+        newAddContact.setNote(notes.getText().toString());
+
+        newAddContact.setQq(qq_num.getText().toString());
+        newAddContact.setWechat(wechat.getText().toString());
+        newAddContact.setSkype(skype.getText().toString());
+        newAddContact.setWeibo(weibo.getText().toString());
+        newAddContact.setAddress(country.getText().toString()
+                + province.getText().toString()
+                + city.getText().toString()
+                + address.getText().toString());
+
+        newAddContact.setCompany_id(currentCompanyDBiD);
+        newAddList.add(newAddContact);
+
+        ContactDBManager.add_contact(newAddList);
+
+        refreshContactList();
+        refreshCompanyDetailDisplay();
+
         if (currentViewCompany != null) {
             currentViewCompany.setVisibility(View.GONE);
         }
@@ -733,6 +816,46 @@ public class main extends Activity {
         }
         newView.setVisibility(view.VISIBLE);
         currentViewContact = newView;
+        EditText last_name = (EditText) findViewById(R.id.edit_contact_xs);
+        EditText first_name = (EditText) findViewById(R.id.edit_contact_mz);
+        EditText job = (EditText) findViewById(R.id.edit_contact_zw);
+        EditText email_gz = (EditText) findViewById(R.id.edit_contact_email_gz);
+        EditText email_sr = (EditText) findViewById(R.id.edit_contact_email_sr);
+        EditText cellphone = (EditText) findViewById(R.id.edit_contact_sj);
+        EditText tel_gz = (EditText) findViewById(R.id.edit_contact_phone_gz);
+        EditText tel_sr = (EditText) findViewById(R.id.edit_contact_phone_sr);
+        EditText notes = (EditText) findViewById(R.id.edit_contact_bz);
+
+        EditText qq_num = (EditText) findViewById(R.id.edit_contact_qq);
+        EditText wechat = (EditText) findViewById(R.id.edit_contact_wc);
+        EditText weibo = (EditText) findViewById(R.id.edit_contact_wb);
+        EditText skype = (EditText) findViewById(R.id.edit_contact_sk);
+
+        EditText country = (EditText) findViewById(R.id.edit_contact_gj);
+        EditText province = (EditText) findViewById(R.id.edit_contact_ss);
+        EditText city = (EditText) findViewById(R.id.edit_contact_cs);
+        EditText address = (EditText) findViewById(R.id.edit_contact_dz);
+        EditText zip = (EditText) findViewById(R.id.edit_contact_yzbm);
+
+        ContactInfo_new thisContact = ContactDBManager.contact_queryByID(currentContactDBiD);
+        last_name.setText(thisContact.getFirstname());
+        first_name.setText(thisContact.getLastname());
+        job.setText(thisContact.getDuty());
+        email_gz.setText(thisContact.getEmail_work());
+        email_sr.setText(thisContact.getEmail_personal());
+        cellphone.setText(thisContact.getPhone_mobile());
+        tel_gz.setText(thisContact.getPhone_work());
+        tel_sr.setText(thisContact.getPhone_home());
+        notes.setText(thisContact.getNote());
+
+        qq_num.setText(thisContact.getQq());
+        wechat.setText(thisContact.getWechat());
+        weibo.setText(thisContact.getWeibo());
+        skype.setText(thisContact.getSkype());
+
+        country.setText("中国");
+        address.setText(thisContact.getAddress());
+
     }
 
     public void edit_contact_page_back(View view) {
@@ -766,13 +889,29 @@ public class main extends Activity {
         EditText wechat = (EditText) findViewById(R.id.edit_contact_wc);
         EditText weibo = (EditText) findViewById(R.id.edit_contact_wb);
         EditText skype = (EditText) findViewById(R.id.edit_contact_sk);
-        
         EditText country = (EditText) findViewById(R.id.edit_contact_gj);
         EditText province = (EditText) findViewById(R.id.edit_contact_ss);
         EditText city = (EditText) findViewById(R.id.edit_contact_cs);
         EditText address = (EditText) findViewById(R.id.edit_contact_dz);
         EditText zip = (EditText) findViewById(R.id.edit_contact_yzbm);
-        
+
+        ContactDBManager.contact_updateLastname(currentContactDBiD, last_name.getText().toString());
+        ContactDBManager.contact_updateFirstname(currentContactDBiD, first_name.getText().toString());
+        ContactDBManager.contact_updateTitle(currentContactDBiD, job.getText().toString());
+        ContactDBManager.contact_updateEmail_work(currentContactDBiD, email_gz.getText().toString());
+        ContactDBManager.contact_updateEmail_personal(currentContactDBiD, email_sr.getText().toString());
+        ContactDBManager.contact_updatePhone_mobile(currentContactDBiD, cellphone.getText().toString());
+        ContactDBManager.contact_updateNote(currentContactDBiD,notes.getText().toString());
+        ContactDBManager.contact_updatePhone_work(currentContactDBiD, tel_gz.getText().toString());
+        ContactDBManager.contact_updatePhone_home(currentContactDBiD, tel_sr.getText().toString());
+
+        ContactDBManager.contact_updateQq(currentContactDBiD, qq_num.getText().toString());
+        ContactDBManager.contact_updateWechat(currentContactDBiD,wechat.getText().toString());
+        ContactDBManager.contact_updateWeibo(currentContactDBiD, weibo.getText().toString());
+        ContactDBManager.contact_updateSkype(currentContactDBiD, skype.getText().toString());
+        ContactDBManager.contact_updateAddress(currentContactDBiD, address.getText().toString());
+
+        refreshContactDetailDisplay();
     }
 
     public void add_contact_page_back_fromContact(View view) {
@@ -882,6 +1021,25 @@ public class main extends Activity {
         mSearch.geocode(new GeoCodeOption().city("上海").address(addr));
     }
 
+    public void contactOfCompany_Button(View view) {
+        View theList = findViewById(R.id.contactInCompany);
+        if (theList.getVisibility() == View.GONE) {
+            theList.setVisibility(View.VISIBLE);
+        }
+        else {
+            theList.setVisibility(View.GONE);
+        }
+        Log.e("==================","listOnClick");
+    }
+
+    public void RankCompany(ArrayList<CompanyInfo> currentList) {
+        PinyinComparator thiscomparator = new PinyinComparator();
+        Collections.sort(currentList, thiscomparator);
+    }
+    public void RankContact(ArrayList<ContactInfo_new> currentList) {
+        PinyinComparator2 thiscomparator = new PinyinComparator2();
+        Collections.sort(currentList, thiscomparator);
+    }
 
     @Override
     protected void onPause() {

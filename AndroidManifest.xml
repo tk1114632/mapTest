@@ -19,6 +19,7 @@
         <activity
                 android:name="main"
                 android:screenOrientation="landscape"
+                android:theme="@android:style/Theme.NoTitleBar"
                 android:configChanges="orientation|keyboardHidden"
                 android:windowSoftInputMode="adjustPan"
                 android:label="CRM for Showcase">
@@ -30,14 +31,9 @@
         <activity
                 android:name="mapView"
                 android:screenOrientation="landscape"
+                android:theme="@android:style/Theme.NoTitleBar"
                 android:configChanges="orientation|keyboardHidden"
                 android:label="地图">
-        </activity>
-        <activity
-                android:name="newContact"
-                android:screenOrientation="portrait"
-                android:configChanges="orientation|keyboardHidden"
-                android:label="新联系人">
         </activity>
 
 
