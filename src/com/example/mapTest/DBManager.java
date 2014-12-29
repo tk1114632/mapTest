@@ -142,6 +142,7 @@ public class DBManager {
                         company.getBilling_address_id(),company.getContact_id(),company.getEvent_id(),company.getIndustry_id(),
                         company.getSale_id(),company.getShipping_address_id(),company.getPositionLat(),company.getPositionLng()
                 });
+
             }
             db.setTransactionSuccessful();
         } finally {
@@ -173,6 +174,7 @@ public class DBManager {
 
     public void deleteOldCompany(int companyDB_id){
         db.delete("Company", "_id=?", new String[]{companyDB_id+""});
+        address_deleteByID(companyDB_id);
     }
 
     public void company_deleteAll() {
@@ -200,32 +202,36 @@ public class DBManager {
                 newCompany.setAddress(c.getString(c.getColumnIndex("address")));
                 currentList.add(newCompany);
             }
+            c.close();
         }
 
-        c.close();
         return currentList;
     }
 
     public ArrayList<CompanyInfo> company_queryName(String key_name) {
         ArrayList<CompanyInfo> currentList = new ArrayList<CompanyInfo>();
-        Cursor c = db.rawQuery("SELECT * FROM  Company WHERE name = ?", new String[]{key_name});
+        Cursor c = db.rawQuery("SELECT * FROM Company WHERE name like '%" + key_name + "%'", null);
         if (c != null) {
             while (c.moveToNext()) {
                 CompanyInfo newCompany =  new CompanyInfo();
                 newCompany.setName(c.getString((c.getColumnIndex("name"))));
                 newCompany.setPhone(c.getString((c.getColumnIndex("phone"))));
                 newCompany.setWebsite(c.getString((c.getColumnIndex("website"))));
+                newCompany.setAddress(c.getString(c.getColumnIndex("address")));
+                newCompany.setField(c.getString(c.getColumnIndex("field")));
                 newCompany.setBilling_address_id(c.getInt((c.getColumnIndex("billing_address_id"))));
                 newCompany.setContact_id(c.getInt((c.getColumnIndex("contact_id"))));
                 newCompany.setEvent_id(c.getInt((c.getColumnIndex("event_id"))));
                 newCompany.setIndustry_id(c.getInt(c.getColumnIndex("industry_id")));
                 newCompany.setSale_id(c.getInt(c.getColumnIndex("sale_id")));
                 newCompany.setShipping_address_id(c.getInt(c.getColumnIndex("shipping_address_id")));
+                newCompany.setPositionLat(c.getDouble(c.getColumnIndex("position_lat")));
+                newCompany.setPositionLng(c.getDouble(c.getColumnIndex("position_lng")));
                 newCompany.setDb_id(c.getInt(c.getColumnIndex("_id")));
                 currentList.add(newCompany);
             }
+            c.close();
         }
-        c.close();
         return currentList;
     }
 
@@ -250,8 +256,9 @@ public class DBManager {
                 newCompany.setPositionLng(c.getDouble(c.getColumnIndex("position_lng")));
                 newCompany.setDb_id(c.getInt(c.getColumnIndex("_id")));
             }
+            c.close();
         }
-        c.close();
+
         return newCompany;
     }
     ////////////////////////////////////////////////////////////////////////////////
@@ -266,7 +273,8 @@ public class DBManager {
                 db.execSQL("INSERT INTO Contact(email_personal, email_work, firstname, lastname, " +
                         " phone_home, phone_mobile,  phone_work, note, qq, skype," +
                         " title, wechat, weibo, address, duty, address_id, company_id, event_id," +
-                        " project_id, sale_id, position_lat, position_lng) VALUES(?, ?, ?, ?, ?,? , ?, ?, ?, ?,?,?, ?,?,?,?,?,?,?,?, ?, ?)", new Object[]{contact.getEmail_personal()
+                        " project_id, sale_id, position_lat, position_lng) VALUES(?, ?, ?, ?, ?,? , ?, ?, ?, ?,?,?, ?,?,?,?,?,?,?,?, ?, ?)"
+                        , new Object[]{contact.getEmail_personal()
                         , contact.getEmail_work(),contact.getFirstname(),contact.getLastname(),
                         contact.getPhone_home(),contact.getPhone_mobile(),contact.getPhone_work(),contact.getNote(),contact.getQq(),contact.getSkype(),
                         contact.getTitle(),contact.getWechat(), contact.getWeibo(),contact.getAddress(), contact.getDuty(),contact.getAddress_id(),contact.getCompany_id(),
@@ -450,6 +458,114 @@ public class DBManager {
         }
         c.close();
         return returnList;
+    }
+
+    public ArrayList<ContactInfo_new> contact_queryName(String key_name) {
+        ArrayList<ContactInfo_new> currentList = new ArrayList<ContactInfo_new>();
+        Cursor c = db.rawQuery("SELECT * FROM Contact WHERE firstname like '%" + key_name + "%'", null);
+        if (c != null) {
+            while (c.moveToNext()) {
+                ContactInfo_new newContact =  new ContactInfo_new();
+                newContact.setEmail_personal(c.getString((c.getColumnIndex("email_personal"))));
+                newContact.setEmail_work(c.getString((c.getColumnIndex("email_work"))));
+                newContact.setFirstname(c.getString((c.getColumnIndex("firstname"))));
+                newContact.setLastname(c.getString((c.getColumnIndex("lastname"))));
+                newContact.setNote(c.getString((c.getColumnIndex("note"))));
+                newContact.setPhone_home(c.getString((c.getColumnIndex("phone_home"))));
+                newContact.setPhone_mobile(c.getString((c.getColumnIndex("phone_mobile"))));
+                newContact.setPhone_work(c.getString((c.getColumnIndex("phone_work"))));
+                newContact.setQq(c.getString((c.getColumnIndex("qq"))));
+                newContact.setSkype(c.getString((c.getColumnIndex("skype"))));
+                newContact.setTitle(c.getString((c.getColumnIndex("title"))));
+                newContact.setWechat(c.getString((c.getColumnIndex("wechat"))));
+                newContact.setWeibo(c.getString(c.getColumnIndex("weibo")));
+                newContact.setAddress_id(c.getInt((c.getColumnIndex("address_id"))));
+                newContact.setCompany_id(c.getInt((c.getColumnIndex("company_id"))));
+                newContact.setEvent_id(c.getInt((c.getColumnIndex("event_id"))));
+                newContact.setProject_id(c.getInt(c.getColumnIndex("project_id")));
+                newContact.setSale_id(c.getInt(c.getColumnIndex("sale_id")));
+
+                newContact.setDuty(c.getString(c.getColumnIndex("duty")));
+                newContact.setDb_id(c.getInt(c.getColumnIndex("_id")));
+                newContact.setAddress(c.getString(c.getColumnIndex("address")));
+
+                currentList.add(newContact);
+            }
+            c.close();
+        }
+        c = db.rawQuery("SELECT * FROM Contact WHERE lastname like '%" + key_name + "%'", null);
+        if (c != null) {
+            while (c.moveToNext()) {
+                ContactInfo_new newContact =  new ContactInfo_new();
+                newContact.setEmail_personal(c.getString((c.getColumnIndex("email_personal"))));
+                newContact.setEmail_work(c.getString((c.getColumnIndex("email_work"))));
+                newContact.setFirstname(c.getString((c.getColumnIndex("firstname"))));
+                newContact.setLastname(c.getString((c.getColumnIndex("lastname"))));
+                newContact.setNote(c.getString((c.getColumnIndex("note"))));
+                newContact.setPhone_home(c.getString((c.getColumnIndex("phone_home"))));
+                newContact.setPhone_mobile(c.getString((c.getColumnIndex("phone_mobile"))));
+                newContact.setPhone_work(c.getString((c.getColumnIndex("phone_work"))));
+                newContact.setQq(c.getString((c.getColumnIndex("qq"))));
+                newContact.setSkype(c.getString((c.getColumnIndex("skype"))));
+                newContact.setTitle(c.getString((c.getColumnIndex("title"))));
+                newContact.setWechat(c.getString((c.getColumnIndex("wechat"))));
+                newContact.setWeibo(c.getString(c.getColumnIndex("weibo")));
+                newContact.setAddress_id(c.getInt((c.getColumnIndex("address_id"))));
+                newContact.setCompany_id(c.getInt((c.getColumnIndex("company_id"))));
+                newContact.setEvent_id(c.getInt((c.getColumnIndex("event_id"))));
+                newContact.setProject_id(c.getInt(c.getColumnIndex("project_id")));
+                newContact.setSale_id(c.getInt(c.getColumnIndex("sale_id")));
+
+                newContact.setDuty(c.getString(c.getColumnIndex("duty")));
+                newContact.setDb_id(c.getInt(c.getColumnIndex("_id")));
+                newContact.setAddress(c.getString(c.getColumnIndex("address")));
+
+                currentList.add(newContact);
+            }
+            c.close();
+        }
+        return currentList;
+    }
+
+    public void address_add(int company_id){
+        db.beginTransaction();
+        try {
+            db.execSQL("INSERT INTO AddressInfo(company_id, company_billing_address, company_shipping_address) VALUES(?, ?, ?)",
+                    new Object[]{company_id, "",""});
+
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
+    }
+
+    public  AddressInfo address_queryByCompanyID(int key){
+        AddressInfo returnAddressInfo = new AddressInfo();
+        Cursor c = db.rawQuery("SELECT * FROM AddressInfo WHERE company_id = ?", new String[]{key+""});
+        if (c != null) {
+            while (c.moveToNext()) {
+                returnAddressInfo.setCompany_id(key);
+                returnAddressInfo.setCompany_billing_address(c.getString(c.getColumnIndex("company_billing_address")));
+                returnAddressInfo.setCompany_shipping_address(c.getString(c.getColumnIndex("company_shipping_address")));
+            }
+        }
+        return returnAddressInfo;
+    }
+
+    public void address_deleteByID(int key){
+        db.execSQL("DELETE FROM AddressInfo WHERE company_id ="+key);
+    }
+    public void address_updateBilling(int key, String text) {
+        if (text == null || text.equals("")){return;}
+        Cursor c = db.rawQuery("SELECT * FROM AddressInfo WHERE company_id = ?", new String[]{key+""});
+        if (!c.moveToFirst()) {address_add(key);}
+        db.execSQL("UPDATE AddressInfo SET company_billing_address = '"+text+ "' WHERE company_id = "+key);
+    }
+    public void address_updateShipping(int key, String text) {
+        if (text == null || text.equals("")){return;}
+        Cursor c = db.rawQuery("SELECT * FROM AddressInfo WHERE company_id = ?", new String[]{key+""});
+        if (!c.moveToFirst()) {address_add(key);}
+        db.execSQL("UPDATE AddressInfo SET company_shipping_address = '"+text+ "' WHERE company_id = "+key);
     }
 
     //close database

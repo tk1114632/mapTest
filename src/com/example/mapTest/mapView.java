@@ -5,17 +5,12 @@ package com.example.mapTest;
  */
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 
 import com.baidu.location.BDLocation;
@@ -30,11 +25,10 @@ import com.baidu.mapapi.navi.BaiduMapNavigation;
 import com.baidu.mapapi.navi.NaviPara;
 import com.baidu.mapapi.utils.DistanceUtil;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
+
 
 
 
@@ -60,7 +54,7 @@ public class mapView extends Activity {
     //RadioGroup.OnCheckedChangeListener radioButtonListener;
     Button requestLocButton;
     Button displayNearContactButton;
-    boolean isFirstLoc = false;// 是否首次定位
+    boolean isFirstLoc = false;// 是否首次定
     boolean isDisplayed = false; //是否已经显示附近联系人
 
     private InfoWindow mInfoWindow;
@@ -237,7 +231,7 @@ public class mapView extends Activity {
     {
 
         ContactDetailInfo.setVisibility(View.VISIBLE);
-        ViewHolder CurrentDetail = null;
+        ViewHolder CurrentDetail;
         if (mMarkerDetail.getTag() == null)
         {
             CurrentDetail = new ViewHolder();

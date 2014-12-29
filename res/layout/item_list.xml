@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="25dp"
+              android:layout_height="40dp"
               android:background="#FF191919"
               android:orientation="horizontal"
               android:id="@+id/item_list">
@@ -11,22 +11,22 @@
             android:layout_width="25dip"
             android:layout_height="25dp"
             android:layout_gravity="center"
-            android:src="@drawable/contactpic"/>
+            android:src="@drawable/maker"/>
 
     <TextView
-            android:layout_width="5dp"
-            android:layout_height="20dp"
+            android:layout_width="10dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:paddingRight="10dp"
-            android:text="     "
+            android:text="            "
             android:textSize="15sp"/>
     <TextView
             android:id="@+id/item_name"
             android:layout_width="fill_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:textColor="@color/white"
             android:paddingRight="10dp"
             android:text="暂无"
@@ -35,7 +35,7 @@
     <TextView
             android:id="@+id/item_company"
             android:layout_width="fill_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:textColor="@color/white"

@@ -22,7 +22,7 @@
                 android:theme="@android:style/Theme.NoTitleBar"
                 android:configChanges="orientation|keyboardHidden"
                 android:windowSoftInputMode="adjustPan"
-                android:label="CRM for Showcase">
+                android:label="CRM">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

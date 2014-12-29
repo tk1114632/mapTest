@@ -53,8 +53,18 @@ public class popListAdapter extends BaseAdapter {
         }else{
             holder = (Holder) convertView.getTag();
         }
-        holder.name.setText(list.get(position).getName());
-        holder.company.setText(list.get(position).getCompany());
+        holder.name.setText(""+list.get(position).getName());
+        int distance = list.get(position).getDistance();
+        if (distance > 0 && distance < 1000) {
+            holder.company.setText("距离: " + distance+"米");
+        }
+        else if (distance < 1000000) {
+            holder.company.setText("距离: " + distance/1000 +"千米");
+        }
+        else {
+            holder.company.setText("距离未知");
+        }
+
         return convertView;
     }
 

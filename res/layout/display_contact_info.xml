@@ -26,7 +26,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="10dip"
+                                android:layout_margin="10dp"
                                 android:textColor="@color/black"
                                 android:textSize="25sp"
                                 android:text="联系人信息"
@@ -34,15 +34,15 @@
 
                         <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="50dip"
-                                android:textSize="25dip"
+                                android:layout_height="50dp"
+                                android:textSize="25sp"
                                 android:textColor="@color/black"
                                 android:text=""
                                 android:textAppearance="?android:attr/textAppearanceMedium" />
                         <Button
-                                android:layout_width="60dip"
-                                android:layout_height="35dip"
-                                android:textSize="20dp"
+                                android:layout_width="60dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/blue"
                                 android:text="编辑"
                                 android:background="@color/white"
@@ -55,16 +55,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    姓氏*" />
                         <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_xs" /> 
@@ -76,16 +76,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    名字" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_mz" /> 
@@ -97,16 +97,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    职务" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_zw" />
@@ -118,16 +118,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电子邮箱（工作）" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_email_gz" />
@@ -140,16 +140,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电子邮箱（私人）" />
                         <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_email_sr" />
@@ -161,16 +161,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    手机" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_sj" /> 
@@ -182,16 +182,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电话（工作）" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_phone_gz" />
@@ -203,16 +203,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    电话（私人）" />
                         <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_phone_sr" />
@@ -224,16 +224,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    备注" />
                         <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    备注" 
                                 android:id="@+id/display_contact_bz" />
@@ -243,7 +243,7 @@
                              	android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="10dip"
+                                android:layout_margin="10dp"
                                
                                 android:textSize="25sp"
                                 android:textColor="@color/black"                                
@@ -256,16 +256,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    QQ" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_qq" />
@@ -277,16 +277,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    WeChat" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_wc" />
@@ -298,16 +298,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    Skype" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_sk" />
@@ -319,16 +319,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    Weibo" />
                           <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    暂无"
                                 android:id="@+id/display_contact_wb" />
@@ -338,7 +338,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_margin="10dip"
+                                android:layout_margin="10dp"
                                 android:textColor="@color/black"
                                 android:textSize="25sp"                                
                                 android:text="地址信息"
@@ -350,16 +350,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    国家" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    "
                                 android:id="@+id/display_contact_gj" />
@@ -371,16 +371,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    省/市" />
                          <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="   "
                                 android:id="@+id/display_contact_ss" />
@@ -392,16 +392,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    城市" />
                           <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    "
                                 android:id="@+id/display_contact_cs" />
@@ -413,16 +413,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    地址" />
                         <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    "
                                 android:id="@+id/display_contact_dz" />
@@ -434,16 +434,16 @@
                             android:orientation="horizontal" >
 
                         <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_width="300dp"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="    邮政编码" />
                           <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="30dip"
-                                android:textSize="20dip"
+                                android:layout_height="35dp"
+                                android:textSize="20sp"
                                 android:textColor="@color/black"
                                 android:text="    "
                                 android:id="@+id/display_contact_yzbm" />

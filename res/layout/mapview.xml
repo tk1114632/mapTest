@@ -14,15 +14,15 @@
     <RelativeLayout
             android:id="@+id/info_detail"
             android:layout_width="500dp"
-            android:layout_height="200dp"
+            android:layout_height="160dp"
             android:visibility="gone"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="50dp"
             android:background="#CC4e5a6b"
             android:clickable="false">
         <LinearLayout
-                android:layout_width="400dp"
+                android:layout_width="333dp"
                 android:layout_height="fill_parent"
 
                 android:layout_alignParentLeft="true"
@@ -61,20 +61,22 @@
                     android:textSize="17sp"/>
         </LinearLayout>
         <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="167dp"
                 android:layout_height="fill_parent"
                 android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="50dip"
+                android:gravity="center"
+                android:layout_marginRight="1dip"
                 android:orientation="horizontal">
             <Button
                     android:id="@+id/navigation_button"
-                    android:layout_width="fill_parent"
-                    android:layout_height="40dip"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/navigator"
                     android:textSize="15sp"
-                    android:text="到这里去"
+                    android:text=""
                     />
          </LinearLayout>
     </RelativeLayout>
@@ -139,7 +141,7 @@
             </LinearLayout>
 
         <ListView
-                android:layout_width="400dp"
+                android:layout_width="500dp"
                 android:layout_height="400dp"
                 android:id="@+id/poplistView"
                 android:layout_centerHorizontal="true"

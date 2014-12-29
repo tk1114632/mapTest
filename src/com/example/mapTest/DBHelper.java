@@ -74,6 +74,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 "position_lat DOUBLE, " +
                 "position_lng DOUBLE " +
                 ")" );
+        db.execSQL("CREATE TABLE IF NOT EXISTS AddressInfo" +
+                   "( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "company_id INT," +
+                        "company_billing_address VARCHAR(50)," +
+                        "company_shipping_address VARCHAR(50)" +
+                    ")");
         Log.e("数据库表建立完毕","DONE!!!!!");
     }
 

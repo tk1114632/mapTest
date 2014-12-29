@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:background="@color/white"
+              android:orientation="horizontal"
+              android:id="@+id/search_text_bar"
+
+              android:focusable="true"
+              android:focusableInTouchMode="true">
+
+    <TextView android:layout_width="8dp" android:layout_height="fill_parent"/>
+    <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:background="@drawable/searchbackb"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:hint="请输入关键字"
+            android:textSize="15sp"
+            android:id="@+id/search_input"
+            android:singleLine="true"
+            />
+    <Button
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:background="@drawable/delete_cross"
+            android:id="@+id/deleteSearchButton"/>
+    <TextView android:layout_width="8dp" android:layout_height="fill_parent"/>
+
+
+
+</LinearLayout>

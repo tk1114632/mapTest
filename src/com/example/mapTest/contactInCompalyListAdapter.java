@@ -45,6 +45,7 @@ public class contactInCompalyListAdapter extends BaseAdapter {
         name.setText(list.get(position).getLastname()+list.get(position).getFirstname());
         name.setTextColor(Color.BLACK);
         TextView tel = (TextView) convertView.findViewById(R.id.contact_in_company_item_tel);
+        tel.setText(list.get(position).getPhone_mobile());
         tel.setTextColor(Color.BLACK);
         return convertView;
     }

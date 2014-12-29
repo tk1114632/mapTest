@@ -109,6 +109,7 @@
                 android:orientation="vertical" >
 
             <!-- search -->
+            <include layout="@layout/search_bar" />
 
             <!-- list -->
 
@@ -191,8 +192,8 @@
 
                                 <Button
                                         android:id="@+id/edit_this_company"
-                                        android:layout_width="60dip"
-                                        android:layout_height="35dip"
+                                        android:layout_width="60dp"
+                                        android:layout_height="35dp"
                                         android:textSize="20sp"
                                         android:textColor="@color/blue"
                                         android:background="@color/white"
@@ -208,8 +209,8 @@
 
                                 <TextView
                                         android:id="@+id/web_address"
-                                        android:layout_width="120dip"
-                                        android:layout_height="35dip"
+                                        android:layout_width="200dp"
+                                        android:layout_height="35dp"
                                         android:textSize="20sp"
                                         android:text="    网址 :"
                                         android:textColor="@color/black"
@@ -218,7 +219,7 @@
                                 <TextView
                                         android:id="@+id/web_address_content"
                                         android:layout_width="match_parent"
-                                        android:layout_height="35dip"
+                                        android:layout_height="35dp"
                                         android:textSize="20sp"
                                         android:textColor="@color/black"
                                         android:singleLine="true" />
@@ -232,8 +233,8 @@
 
                                 <TextView
                                         android:id="@+id/phone_number"
-                                        android:layout_width="120dip"
-                                        android:layout_height="35dip"
+                                        android:layout_width="200dp"
+                                        android:layout_height="35dp"
                                         android:textSize="20sp"
                                         android:text="    联系电话:"
                                         android:textColor="@color/black"
@@ -241,7 +242,7 @@
                                 <TextView
                                         android:id="@+id/phone_number_content"
                                         android:layout_width="match_parent"
-                                        android:layout_height="35dip"
+                                        android:layout_height="35dp"
                                         android:textSize="20sp"
                                         android:textColor="@color/black"
                                         android:singleLine="true" />
@@ -254,7 +255,7 @@
                                     android:gravity="center_vertical">
                                 <TextView
                                         android:id="@+id/education_type"
-                                        android:layout_width="120dip"
+                                        android:layout_width="200dp"
                                         android:layout_height="35dip"
                                         android:textSize="20sp"
                                         android:text="    产业类型:"
@@ -276,7 +277,7 @@
                                     android:gravity="center_vertical">
                                 <TextView
 
-                                        android:layout_width="120dip"
+                                        android:layout_width="200dp"
                                         android:layout_height="35dip"
                                         android:textSize="20sp"
                                         android:text="    公司地址:"
@@ -355,7 +356,7 @@
                                         android:id="@+id/in_address"
                                         android:layout_width="match_parent"
                                         android:layout_height="30dip"
-                                        android:textSize="20dip"
+                                        android:textSize="20sp"
                                         android:background="@color/white"
                                         android:textColor="@color/black"
                                         android:gravity="left"
@@ -903,7 +904,8 @@
 
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    开单国家内容" />
+                                        android:text="    中国"
+                                        android:id="@+id/kddz_page_country"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -926,7 +928,8 @@
 
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    开单省/市内容" />
+                                        android:text="    上海"
+                                        android:id="@+id/kddz_page_province" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -947,7 +950,8 @@
                                         android:textColor="@color/black"
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    开单城市内容" />
+                                        android:text="    上海"
+                                        android:id="@+id/kddz_page_city"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -970,7 +974,8 @@
 
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    开单地址内容" />
+                                        android:text="    无"
+                                        android:id="@+id/kddz_page_address"/>
                             </LinearLayout>
                             <LinearLayout
                                     android:layout_width="match_parent"
@@ -991,7 +996,8 @@
                                         android:textColor="@color/black"
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    开单邮政编码内容" />
+                                        android:text="    无"
+                                        android:id="@+id/kddz_page_zip" />
                             </LinearLayout>
                         </LinearLayout>
                         <!-- details 开单地址查看end-->
@@ -1060,7 +1066,8 @@
                                         android:paddingTop="0dip"
                                         android:paddingBottom="5dip"
                                         android:paddingLeft="10dip"
-                                        android:singleLine="true" />
+                                        android:singleLine="true"
+                                        android:id="@+id/edit_kddz_page_country"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -1084,7 +1091,8 @@
                                         android:paddingTop="0dip"
                                         android:paddingBottom="5dip"
                                         android:paddingLeft="10dip"
-                                        android:singleLine="true" />
+                                        android:singleLine="true"
+                                        android:id="@+id/edit_kddz_page_province"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -1107,7 +1115,8 @@
                                         android:paddingTop="0dip"
                                         android:paddingBottom="5dip"
                                         android:paddingLeft="10dip"
-                                        android:singleLine="true" />
+                                        android:singleLine="true"
+                                        android:id="@+id/edit_kddz_page_city"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -1131,7 +1140,8 @@
                                         android:paddingTop="0dip"
                                         android:paddingBottom="5dip"
                                         android:paddingLeft="10dip"
-                                        android:singleLine="true" />
+                                        android:singleLine="true"
+                                        android:id="@+id/edit_kddz_page_address"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -1154,7 +1164,8 @@
                                         android:paddingTop="0dip"
                                         android:paddingBottom="5dip"
                                         android:paddingLeft="10dip"
-                                        android:singleLine="true" />
+                                        android:singleLine="true"
+                                        android:id="@+id/edit_kddz_page_zip"/>
                             </LinearLayout>
                         </LinearLayout>
                         <!-- details 开单地址编辑end-->
@@ -1219,7 +1230,7 @@
 
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    收货国家内容" />
+                                        android:text="    中国" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1241,7 +1252,7 @@
 
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    收货省/市内容" />
+                                        android:text="    上海" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1263,7 +1274,7 @@
 
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    收货城市内容" />
+                                        android:text="    上海" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1282,10 +1293,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="30dip"
                                         android:textColor="@color/black"
-
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    收货地址内容" />
+                                        android:text="    无"
+                                        android:id="@+id/shdz_page_address"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -1307,7 +1318,7 @@
 
                                         android:textSize="20dip"
                                         android:singleLine="true"
-                                        android:text="    收货邮政编码内容" />
+                                        android:text="    无" />
                             </LinearLayout>
                         </LinearLayout>
                         <!-- 收货地址查看end -->
@@ -1441,7 +1452,8 @@
                                         android:paddingTop="0dip"
                                         android:paddingBottom="5dip"
                                         android:paddingLeft="10dip"
-                                        android:singleLine="true" />
+                                        android:singleLine="true"
+                                        android:id="@+id/edit_shdz_page_address"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -2455,7 +2467,8 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:clickable="false"
+                android:clickable="true"
+                android:onClick="toMapViewButton"
                 >
 
             <ImageView
